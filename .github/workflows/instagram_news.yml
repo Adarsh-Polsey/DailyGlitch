@@ -1,0 +1,31 @@
+name: Instagram Auto-Post
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  post_news:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: 📦 Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: 🔑 Set Up Secrets
+        env:
+          CONFIG_JSON: ${{ secrets.CONFIG_JSON }}
+        run: echo "$CONFIG_JSON" > config.json
+
+      - name: 🚀 Run News Posting Script
+        run: python your_script.py
+
+      - name: 🗑️ Cleanup Output Folder
+        run: rm -f output/*.jpg output/*.png
