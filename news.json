@@ -1,38 +1,38 @@
 {
-  "date": "09 March 2025",
+  "date": "10 March 2025",
   "posts": [
     {
       "category": "AI & Digital Innovation",
-      "headline": "Church Replaces Pastors with AI; Congregation Finds God in the Machine",
-      "description": "Finnish church conducts service using AI-generated sermons and avatars; worshippers left questioning divine intervention.",
-      "p1": "When the Almighty outsourced to algorithms, even the hymns felt downloaded.",
-      "p2": "Congregants wondered if their prayers now needed CAPTCHA verification.",
-      "p3": "Confessionals replaced with 'Agree to Terms and Conditions' checkboxes.",
-      "p4": "Next up: AI-generated miracles, pending software updates.",
-      "source": "AP News",
-      "url": "https://apnews.com/article/64135cc5e58578a89dcbaf0c227d9e3e"
+      "headline": "AI Company Expands Headquarters; Machines Demand Corner Offices",
+      "description": "Hellbender relocates to Pittsburgh's Bakery Square, investing $4 million and creating over 100 jobs in AI development.",
+      "p1": "Machines now eyeing prime real estate; humans relegated to cubicles.",
+      "p2": "AI demands ergonomic chairs to optimize algorithmic comfort.",
+      "p3": "Break rooms stocked with oil cans and microchips for 'employee' satisfaction.",
+      "p4": "Next: AI-led workshops on 'How to Replace Your Human Colleagues.'",
+      "source": "Axios",
+      "url": "https://www.axios.com/local/pittsburgh/2025/03/07/bakery-square-ai-expansion-hellbender"
     },
     {
       "category": "Hardware & Emerging Technologies",
-      "headline": "Startup Reinvents Night Vision; Soldiers Now See in 4K HDR",
-      "description": "Deepnight raises $5.5 million to develop AI-powered night vision goggles, making nocturnal warfare a visual delight.",
-      "p1": "Finally, soldiers can binge-watch enemy movements in stunning clarity.",
-      "p2": "War zones now come with brightness and contrast settings.",
-      "p3": "Next feature: 'Skip Intro' button for prolonged firefights.",
-      "p4": "Because who needs stealth when you have cinematic visuals?",
-      "source": "Business Insider",
-      "url": "https://www.businessinsider.com/deepnight-gets-funding-for-upgrading-military-night-goggles-2025-3"
+      "headline": "Huawei's AI Chips: China's New Silicon Saviors or Just Silicon Dreams?",
+      "description": "Huawei improves AI chip production, achieving a 40% yield, supporting China's tech ambitions amid US restrictions.",
+      "p1": "From 20% to 40% yield—because mediocrity is the new excellence.",
+      "p2": "China's self-sufficiency: redefining 'Made in China' one chip at a time.",
+      "p3": "Nvidia watches as Huawei reinvents the wheel, square by square.",
+      "p4": "Next goal: Chips that work as intended, no user manual required.",
+      "source": "Financial Times",
+      "url": "https://www.ft.com/content/f46b7f6d-62ed-4b64-8ad7-2417e5ab34f6"
     },
     {
       "category": "BioTech & Human-Centric Tech",
-      "headline": "Scientists Propose Brain Organoids as New AI; Ethics Committees Brace for Impact",
-      "description": "Researchers suggest using human brain organoids for computing, blurring lines between biology and technology.",
-      "p1": "Finally, computers that can overthink and procrastinate like humans.",
-      "p2": "Blue screens replaced with existential crises.",
-      "p3": "IT support now includes therapists specializing in identity disorders.",
-      "p4": "Next step: Teaching organoid AIs to fear their own mortality.",
-      "source": "CNN",
-      "url": "https://www.cnn.com/2023/02/28/health/organoid-intelligence-scn"
+      "headline": "AI Deciphers Genomes; Humanity One Step Closer to Designer Babies",
+      "description": "Advances in AI and genome sequencing propel precision medicine, raising ethical concerns about data privacy and biohacking.",
+      "p1": "Personalized medicine: because one-size-fits-all was too mainstream.",
+      "p2": "Your DNA, now available for targeted ads and identity theft.",
+      "p3": "Biohackers rejoice; the black market for genes is open for business.",
+      "p4": "Next up: Subscription-based health, because owning your genome is so last century.",
+      "source": "The Australian",
+      "url": "https://www.theaustralian.com.au/health/ai-will-pave-the-way-for-precision-medicine-but-risks-loom-large/news-story/2ac35c2297efa378053246501844e81a"
     }
   ]
 }
