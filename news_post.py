@@ -13,11 +13,11 @@ USERNAME = config["username"]
 PASSWORD = config["password"]
 
 # Category-to-image mapping
-CATEGORY_IMAGES = {
-    "AI & Digital Innovation": "templates/ai_template.jpg",
-    "Hardware & Emerging Technologies": "templates/hardware_template.jpg",
-    "BioTech & Human-Centric Tech": "templates/biotech_template.jpg",
-}
+# CATEGORY_IMAGES = {
+#     "AI & Digital Innovation": "templates/ai_template.jpg",
+#     "Hardware & Emerging Technologies": "templates/hardware_template.jpg",
+#     "BioTech & Human-Centric Tech": "templates/biotech_template.jpg",
+# }
 
 # Load news data
 with open("news.json") as f:
@@ -57,10 +57,10 @@ def wrap_text(text, font, max_width, draw):
 # Function to generate image with wrapped text
 # Function to generate image with wrapped text
 def create_news_image(category, headline, description, p1, p2, output_path):
-    if category not in CATEGORY_IMAGES:
-        raise ValueError(f"Invalid category: {category}")
+    # if category not in CATEGORY_IMAGES:
+    #     raise ValueError(f"Invalid category: {category}")
 
-    img = Image.open(CATEGORY_IMAGES[category])
+    img = Image.open("templates/template.jpg")
     draw = ImageDraw.Draw(img)
     font_bold = "font/inter_bold.ttf"
     font_light = "font/inter_light.ttf"
@@ -171,7 +171,7 @@ def process_and_post():
         )
         
         # ✅ Pass JPGs instead of PNGs
-        post_to_instagram([img1_jpg, img2_jpg], caption)
+        # post_to_instagram([img1_jpg, img2_jpg], caption)
 
 if __name__ == "__main__":
     process_and_post()
