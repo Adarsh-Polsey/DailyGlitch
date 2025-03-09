@@ -25,7 +25,7 @@ jobs:
         run: echo "$CONFIG_JSON" > config.json
 
       - name: 🚀 Run News Posting Script
-        run: python your_script.py
+        run: python news_post.py
 
-      - name: 🗑️ Cleanup Output Folder
-        run: rm -f output/*.jpg output/*.png
+      # - name: 🗑️ Cleanup Output Folder
+      #   run: rm -f output/*.jpg output/*.png
