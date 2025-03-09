@@ -171,7 +171,7 @@ def process_and_post():
         )
         
         # ✅ Pass JPGs instead of PNGs
-        # post_to_instagram([img1_jpg, img2_jpg], caption)
+        post_to_instagram([img1_jpg, img2_jpg], caption)
 
 if __name__ == "__main__":
     process_and_post()
