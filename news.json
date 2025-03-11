@@ -1,38 +1,38 @@
 {
-  "date": "10 March 2025",
+  "date": "11 March 2025",
   "posts": [
     {
-      "category": "AI & Digital Innovation",
-      "headline": "AI Company Expands Headquarters; Machines Demand Corner Offices",
-      "description": "Hellbender relocates to Pittsburgh's Bakery Square, investing $4 million and creating over 100 jobs in AI development.",
-      "p1": "Machines now eyeing prime real estate; humans relegated to cubicles.",
-      "p2": "AI demands ergonomic chairs to optimize algorithmic comfort.",
-      "p3": "Break rooms stocked with oil cans and microchips for 'employee' satisfaction.",
-      "p4": "Next: AI-led workshops on 'How to Replace Your Human Colleagues.'",
+      "category": "Startups",
+      "headline": "Wayfair's 'Streamlined' Future: Firing 340 Techies to Boost Morale",
+      "description": "Wayfair lays off 340 tech employees, closing its Austin Technology Development Center to 'streamline operations.'",
+      "p1": "Nothing says 'innovation' like dismantling your tech hub.",
+      "p2": "Employees now have the 'opportunity' to explore new career pathsâ€”like unemployment.",
+      "p3": "Cutting-edge strategy: less tech staff equals better tech products.",
+      "p4": "Austin's tech scene just got a little less crowded, and a lot more anxious.",
+      "source": "MySanAntonio",
+      "url": "https://www.mysanantonio.com/business/article/wayfair-layoffs-20212875.php"
+    },
+    {
+      "category": "Artificial Intelligence",
+      "headline": "UK's AI Copyright Overhaul: Inviting Innovation or Legal Armageddon?",
+      "description": "UK plans to allow tech companies to use copyrighted content without permission, sparking legal debates.",
+      "p1": "Who needs artists' consent when you have algorithms?",
+      "p2": "Redefining 'fair use'â€”because laws are just suggestions.",
+      "p3": "AI: now with 100% more ethically sourced plagiarism.",
+      "p4": "Future historians will study this as the 'Great Copyright Heist.'",
+      "source": "The Times",
+      "url": "https://www.thetimes.co.uk/article/britains-ai-copyright-overhaul-wont-break-international-law-7dbbdbpjt"
+    },
+    {
+      "category": "Entrepreneurs",
+      "headline": "Science Agencies Cut: Entrepreneurs Encouraged to Innovate Without Support",
+      "description": "Federal science and tech agencies face budget cuts, leaving entrepreneurs to 'innovate' independently.",
+      "p1": "Who needs research funding when you have dreams?",
+      "p2": "Entrepreneurs: now with 50% less government interference and 100% more obstacles.",
+      "p3": "Innovation thrives in a vacuumâ€”just ask any black hole.",
+      "p4": "Next big startup idea: crowdfunding for basic research.",
       "source": "Axios",
-      "url": "https://www.axios.com/local/pittsburgh/2025/03/07/bakery-square-ai-expansion-hellbender"
-    },
-    {
-      "category": "Hardware & Emerging Technologies",
-      "headline": "Huawei's AI Chips: China's New Silicon Saviors or Just Silicon Dreams?",
-      "description": "Huawei improves AI chip production, achieving a 40% yield, supporting China's tech ambitions amid US restrictions.",
-      "p1": "From 20% to 40% yield—because mediocrity is the new excellence.",
-      "p2": "China's self-sufficiency: redefining 'Made in China' one chip at a time.",
-      "p3": "Nvidia watches as Huawei reinvents the wheel, square by square.",
-      "p4": "Next goal: Chips that work as intended, no user manual required.",
-      "source": "Financial Times",
-      "url": "https://www.ft.com/content/f46b7f6d-62ed-4b64-8ad7-2417e5ab34f6"
-    },
-    {
-      "category": "BioTech & Human-Centric Tech",
-      "headline": "AI Deciphers Genomes; Humanity One Step Closer to Designer Babies",
-      "description": "Advances in AI and genome sequencing propel precision medicine, raising ethical concerns about data privacy and biohacking.",
-      "p1": "Personalized medicine: because one-size-fits-all was too mainstream.",
-      "p2": "Your DNA, now available for targeted ads and identity theft.",
-      "p3": "Biohackers rejoice; the black market for genes is open for business.",
-      "p4": "Next up: Subscription-based health, because owning your genome is so last century.",
-      "source": "The Australian",
-      "url": "https://www.theaustralian.com.au/health/ai-will-pave-the-way-for-precision-medicine-but-risks-loom-large/news-story/2ac35c2297efa378053246501844e81a"
+      "url": "https://www.axios.com/2025/03/10/ai-nist-nsf-cuts-industry-pushback"
     }
   ]
 }
