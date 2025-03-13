@@ -152,7 +152,7 @@ def post_with_retry(cl, image_path, caption, max_retries=3, delay=5):
 def process_and_post():
     delete_images("output")
     category_order = [
-      "Startups","Artificial Intelligence",    "Entrepreneurs"
+      "Startups","Artificial Intelligence","Entrepreneurs"
 ]
     cl = login_with_retry()
     if not cl:
