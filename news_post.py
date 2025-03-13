@@ -154,7 +154,6 @@ def process_and_post():
     category_order = [
       "Startups","Artificial Intelligence",    "Entrepreneurs"
 ]
-    
     cl = login_with_retry()
     if not cl:
         return
