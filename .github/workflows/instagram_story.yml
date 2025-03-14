@@ -1,4 +1,4 @@
-name: Instagram Auto-Post
+name: Post Stories
 
 on:
   workflow_dispatch: 
