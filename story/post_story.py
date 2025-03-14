@@ -164,47 +164,55 @@ def post_with_retry(cl, image_path, caption, max_retries=3, delay=5):
 
 # Process news & post
 def process_and_post():
-    delete_images("output")
+    # Delete old images
+    if os.path.exists("output"):
+        for file in os.listdir("output"):
+            os.remove(os.path.join("output", file))
+    else:
+        os.makedirs("output")
 
-    # cl = login_with_retry()
-    # if not cl:
-    #     return
+    # Check date
+    if datetime.datetime.now().month != 3:
+        raise Exception("❌ The series has ended.")
 
     # Load story data
-    with open("whispers_of_the_glowing_mural.json") as f:
-        story_data = json.load(f)
+    try:
+        with open("whispers_of_the_glowing_mural.json", "r") as f:
+            story_data = json.load(f)
+    except Exception as e:
+        print(f"❌ Failed to load story data: {e}")
+        return
 
+    # Determine Saga number
     num = datetime.datetime.now().day - 14
     print(f"📅 Selected Saga Number: {num}")
 
+    # Filter story
     filtered_story = [story for story in story_data if story["Saga"] == num]
-    
     if not filtered_story:
         print(f"⚠️ No story found for Saga {num}. Skipping...")
         return
 
     # Extract story
     story = filtered_story[0]
-    img_path = f"output/{num}.jpeg"
 
-    # Create story image
-    create_story_image(
-        saga_title=story["Title"],  
-        path_title=story["Paths"][0]["Title"],  
-        content=story["Paths"][0]["Text"],  
-        output_path=img_path
-    )
+    # Generate and post images for each Path
+    for i, path in enumerate(story["Paths"]):
+        img_path = f"output/{num}_{i+1}.jpeg"
+        create_story_image(
+            saga_title=story["Title"],  
+            path_title=story["Paths"][i]["Title"],  
+            content=story["Paths"][i]["Text"],  
+            output_path=img_path
+        )
+        caption = (
+            f"{story['Paths'][i]['Title']}\n\n{story['Paths'][i]['Text']}\n\n"
+            f"#Romance #Magic #Story #Readers #College\n#Ernakulam #Kerala #India #Kochi"
+        )
+        # post_with_retry(cl, img_path, caption)
+        # print(f"✅ Posted Path {i+1} of Saga {num}.")
+        # time.sleep(5)  # Short delay between posts for Stories
 
-    # Construct caption
-    caption = (
-        f"{story['Paths'][0]['Title']}\n\n{story['Paths'][0]['Text']}\n\n"
-        f"#Romane #Magic #Story #Readers #College\n#Ernakulam #Kerala #India #Kochi"
-    )
-
-    # post_with_retry(cl, img_path, caption)
-    # sleep_time = random.randint(30, 90)
-    # print(f"⏳ Waiting {sleep_time} seconds before next post...")
-    # time.sleep(sleep_time)
 
 if __name__ == "__main__":
     process_and_post()
