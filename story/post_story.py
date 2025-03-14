@@ -170,7 +170,9 @@ def process_and_post():
             os.remove(os.path.join("output", file))
     else:
         os.makedirs("output")
-
+    cl = login_with_retry()
+    if not cl:
+        return
     # Check date
     if datetime.datetime.now().month != 3:
         raise Exception("❌ The series has ended.")
@@ -209,9 +211,9 @@ def process_and_post():
             f"{story['Paths'][i]['Title']}\n\n{story['Paths'][i]['Text']}\n\n"
             f"#Romance #Magic #Story #Readers #College\n#Ernakulam #Kerala #India #Kochi"
         )
-        # post_with_retry(cl, img_path, caption)
-        # print(f"✅ Posted Path {i+1} of Saga {num}.")
-        # time.sleep(5)  # Short delay between posts for Stories
+        post_with_retry(cl, img_path, caption)
+        print(f"✅ Posted Path {i+1} of Saga {num}.")
+        time.sleep(5)  # Short delay between posts for Stories
 
 
 if __name__ == "__main__":
