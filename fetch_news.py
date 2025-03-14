@@ -5,8 +5,9 @@ from bs4 import BeautifulSoup
 def fetch_news(tag="div", class_name="newsletter-html"):
     try:
         # Generate yesterday's date for the URL
-        date = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+        date = datetime.datetime.now().strftime("%Y-%m-%d")
         url = f"https://tldr.tech/tech/{date}"
+        print(f"🔗 URL: {url}")
 
         # Fetch news page
         response = requests.get(url, timeout=10)
