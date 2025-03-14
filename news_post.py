@@ -148,7 +148,7 @@ def process_and_post():
     delete_images("output")
     category_order = ["Startups", "Artificial Intelligence", "Entrepreneurs"]
      # Login to Instagram
-    # cl = login_with_retry()
+    cl = login_with_retry()
     
     # Fetching news and convert to humour
     try:
@@ -195,10 +195,10 @@ def process_and_post():
                 f"#TechNews #Innovation #{category.replace(' & ', '').replace(' ', '')}"
             )
 
-            # post_with_retry(cl, img_jpg, caption)
-            # sleep_time = random.randint(30, 90)  # Random delay between 1-3 minutes
-            # print(f"⏳ Waiting {sleep_time} seconds before next post...")
-            # time.sleep(sleep_time)
+            post_with_retry(cl, img_jpg, caption)
+            sleep_time = random.randint(30, 90)  # Random delay between 1-3 minutes
+            print(f"⏳ Waiting {sleep_time} seconds before next post...")
+            time.sleep(sleep_time)
 
 
 if __name__ == "__main__":
