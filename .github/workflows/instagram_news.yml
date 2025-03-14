@@ -2,7 +2,7 @@ name: Instagram Auto-Post
 
 on:
   schedule:
-    - cron: "14 11 * * *"
+    - cron: "30 14 * * *"
   workflow_dispatch: 
 
 jobs:
