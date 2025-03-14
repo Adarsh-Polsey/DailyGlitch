@@ -45,8 +45,8 @@ def create_news_image(category, headline, description, p1, p2, p3, p4, output_pa
 
     # Load fonts
     font_headline = ImageFont.truetype(font_bold, 40)
-    font_description = ImageFont.truetype(font_thin, 30)
-    font_paragraph = ImageFont.truetype(font_light, 30)
+    font_description = ImageFont.truetype(font_light, 30)
+    font_paragraph = ImageFont.truetype(font_thin, 30)
 
     max_width = img.width - 200
     x_start = 100
@@ -148,9 +148,9 @@ def process_and_post():
     delete_images("output")
     category_order = ["Startups", "Artificial Intelligence", "Entrepreneurs"]
      # Login to Instagram
-    # cl = login_with_retry()
-    # if not cl:
-    #     return
+    cl = login_with_retry()
+    if not cl:
+        return
     # Fetching news and convert to humour
     try:
         convert_with_gemini.generate_and_save()
@@ -166,18 +166,11 @@ def process_and_post():
     with open("news.json") as f:
         news_data = json.load(f)
 
-    # Flatten news articles
-    news_list = []
-    for category, articles in news_data["posts"].items():
-        if isinstance(articles, list):  
-            news_list.extend(articles)
-        elif isinstance(articles, dict):  
-            news_list.append(articles)
-
+    news_list = news_data["posts"]
     # Process news
     for category in category_order:
-        print(f"Category: {category} News list: {news_list}")
-        filtered_news = [news for news in news_list if news.get("category") == category]
+        print(f"Category: {category} News list: {news_data}")
+        filtered_news = [news for news in news_list if news["category"] == category]
         if not filtered_news:
             print(f"⚠️ No news items for {category}. Skipping...")
             continue
@@ -203,10 +196,10 @@ def process_and_post():
                 f"#TechNews #Innovation #{category.replace(' & ', '').replace(' ', '')}"
             )
 
-            # post_with_retry(cl, img_jpg, caption)
-            # sleep_time = random.randint(60, 180)  # Random delay between 1-3 minutes
-            # print(f"⏳ Waiting {sleep_time} seconds before next post...")
-            # time.sleep(sleep_time)
+            post_with_retry(cl, img_jpg, caption)
+            sleep_time = random.randint(30, 90)  # Random delay between 1-3 minutes
+            print(f"⏳ Waiting {sleep_time} seconds before next post...")
+            time.sleep(sleep_time)
 
 
 if __name__ == "__main__":
