@@ -1,0 +1,32 @@
+{
+    "date": "14 March 2025",
+    "posts": [
+        {
+            "category": "Startups",
+            "headline": "Compliance: The Only Thing Standing Between You and a Lawsuit.",
+            "description": "Vanta is offering a webinar on April 3rd to showcase its compliance automation tools. These tools are designed to help startups and established security teams manage compliance for frameworks like SOC 2, ISO 27001, HIPAA, HITRUST, and ISO 42001. They aim to automate continuous monitoring of controls, scale security programs, and automate questionnaire responses using AI.",
+            "p1": "Ah, compliance, the red tape that chokes the life out of innovation. But hey, at least Vanta promises to automate the suffocation.",
+            "p2": "Because nothing says 'cutting-edge startup' like desperately trying to avoid getting sued into oblivion by some alphabet soup regulatory agency.",
+            "p3": "Vendor risk? Internal risk? It's all just risk. Let's hope Vanta's AI can handle the existential dread that comes with it.",
+            "p4": "Join the webinar! You'll learn how to 'build trust.' Or, more accurately, how to *appear* trustworthy long enough to cash out."
+        },
+        {
+            "category": "Entrepreneurs",
+            "headline": "Intel CEO: From Board Member to Savior?",
+            "description": "Lip-Bu Tan has been appointed CEO of Intel, effective March 18. This follows the removal of Pat Gelsinger on December 2nd after a period marked by significant financial losses, layoffs, and the abandonment of various projects. Intel reported a staggering $18.76 billion loss in 2024, its worst performance since 1986.",
+            "p1": "Booted the CEO, eh? Guess 'thinking different' just wasn't enough to stop the bleeding. Innovation or liquidation?",
+            "p2": "Tan was already on the board, a 'trusted' insider. Because who better to steer a sinking ship than the guy who helped design the iceberg?",
+            "p3": "$18.76 billion loss. That's not a loss, that's a modern art installation showcasing the ephemeral nature of tech dominance. It\u2019s a bold statement.",
+            "p4": "From board member to CEO. It\u2019s a classic tale: \u2018I can fix the problem I contributed to\u2019 said no one ever. Good Luck Lip-Bu Tan."
+        },
+        {
+            "category": "Artificial Intelligence",
+            "headline": "Google's Robot Army: Coming to Take Your Job (and Maybe Your Wallet).",
+            "description": "Google DeepMind has unveiled Gemini Robotics, a vision-language-action (VLA) model designed to equip robots with general-purpose capabilities. Built on Gemini 2.0, this AI model enables robots to understand and respond to instructions, adapt to changing environments, and perform a wide range of tasks with human-like dexterity.",
+            "p1": "Ah yes, the rise of the machines. Google promises they'll be 'helpful.' But who asked for help being replaced?",
+            "p2": "They can understand instructions and respond? Great. Now they can ignore me with even more precision.",
+            "p3": "Human-like dexterity. Just what we need, robots that can steal our jobs *and* pick our pockets.",
+            "p4": "Gemini Robotics: because humans were just getting too comfortable with being the dominant species. We asked for it."
+        }
+    ]
+}

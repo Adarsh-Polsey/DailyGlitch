@@ -7,7 +7,7 @@ import fetch_news
 def load_config(config_path: str = "config.json") -> Dict[str, Any]:
     """Load configuration from JSON file."""
     try:
-        with open(config_path) as f:
+        with open("config.json") as f:
             return json.load(f)
     except FileNotFoundError:
         print(f"Configuration file '{config_path}' not found.")
@@ -116,7 +116,7 @@ def generate_and_save():
     # Load configuration
     try:
         config = load_config()
-        api_key = config.get("APIKEY")
+        api_key = config["APIKEY"]
         if not api_key:
             print("API key not found in configuration.")
             sys.exit(1)
