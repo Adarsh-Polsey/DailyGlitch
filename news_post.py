@@ -67,22 +67,22 @@ def create_news_image(category, headline, description, p1, p2, p3, p4, output_pa
         y_offset += font_description.size + 5
 
     y_offset += 30
-    for line in wrap_text("> " + p1, font_paragraph, max_width, draw):
+    for line in wrap_text("  " + p1, font_paragraph, max_width, draw):
         draw.text((x_start, y_offset), line, fill="black", font=font_paragraph)
         y_offset += font_paragraph.size + 5
 
     y_offset += 10
-    for line in wrap_text("> " + p2, font_paragraph, max_width, draw):
+    for line in wrap_text("  " + p2, font_paragraph, max_width, draw):
         draw.text((x_start, y_offset), line, fill="black", font=font_paragraph)
         y_offset += font_paragraph.size + 5
         
     y_offset += 10
-    for line in wrap_text("> " + p3, font_paragraph, max_width, draw):
+    for line in wrap_text("  " + p3, font_paragraph, max_width, draw):
         draw.text((x_start, y_offset), line, fill="black", font=font_paragraph)
         y_offset += font_paragraph.size + 5
         
     y_offset += 10
-    for line in wrap_text("> " + p4, font_paragraph, max_width, draw):
+    for line in wrap_text("  " + p4, font_paragraph, max_width, draw):
         draw.text((x_start, y_offset), line, fill="black", font=font_paragraph)
         y_offset += font_paragraph.size + 5
 
@@ -182,7 +182,7 @@ def process_and_post():
             # Create caption with all 4 paragraphs
             caption = (
                 f"{news['headline']}\n\n{news['description']}\n"
-                f"> {news['p1']}\n> {news['p2']}\n> {news['p3']}\n> {news['p4']}\n\n"
+                f"  {news['p1']}\n  {news['p2']}\n  {news['p3']}\n  {news['p4']}\n\n"
                 f"#TechNews #Innovation #{category.replace(' & ', '').replace(' ', '')}"
             )
 
