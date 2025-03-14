@@ -6,8 +6,6 @@ import glob
 from PIL import Image, ImageDraw, ImageFont
 from instagrapi import Client, exceptions
 
-import convert_with_gemini
-
 # Load Instagram login details
 parent_dir = os.path.abspath(os.path.join(os.getcwd(), "..")) 
 config_path = os.path.join(parent_dir, "config.json")
