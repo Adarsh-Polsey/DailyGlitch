@@ -39,14 +39,14 @@ def wrap_text(text, font, max_width, draw):
 def create_news_image(category, headline, description, p1, p2, p3, p4, output_path):
     img = Image.open("templates/template.jpg")
     draw = ImageDraw.Draw(img)
-    font_bold = "font/inter_bold.ttf"
-    font_light = "font/inter_light.ttf"
-    font_thin = "font/inter_thin.ttf"
+    font_head = "font/font_headline.ttf"
+    font_desc = "font/font_description.ttf"
+    font_para = "font/font_paragraph.ttf"
 
     # Load fonts
-    font_headline = ImageFont.truetype(font_bold, 40)
-    font_description = ImageFont.truetype(font_light, 30)
-    font_paragraph = ImageFont.truetype(font_thin, 30)
+    font_headline = ImageFont.truetype(font_head, 40)
+    font_description = ImageFont.truetype(font_desc, 30)
+    font_paragraph = ImageFont.truetype(font_para, 30)
 
     max_width = img.width - 200
     x_start = 100
@@ -148,6 +148,7 @@ def process_and_post():
     delete_images("output")
     category_order = ["Startups", "Artificial Intelligence", "Entrepreneurs"]
      # Login to Instagram
+     
     cl = login_with_retry()
     
     # Fetching news and convert to humour
@@ -192,7 +193,7 @@ def process_and_post():
             caption = (
                 f"{news['headline']}\n\n{news['description']}\n"
                 f"  {news['p1']}\n  {news['p2']}\n  {news['p3']}\n  {news['p4']}\n\n"
-                f"#TechNews #Innovation #{category.replace(' & ', '').replace(' ', '')}"
+                f"#TechNews #Innovation #Startups #Entrepreneurs #AI\n#Technology #chips #Humour #News"
             )
 
             post_with_retry(cl, img_jpg, caption)

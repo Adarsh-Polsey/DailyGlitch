@@ -3,30 +3,30 @@
     "posts": [
         {
             "category": "Startups",
-            "headline": "Compliance: The Only Thing Standing Between You and a Lawsuit.",
-            "description": "Vanta is offering a webinar on April 3rd to showcase its compliance automation tools. These tools are designed to help startups and established security teams manage compliance for frameworks like SOC 2, ISO 27001, HIPAA, HITRUST, and ISO 42001. They aim to automate continuous monitoring of controls, scale security programs, and automate questionnaire responses using AI.",
-            "p1": "Ah, compliance, the red tape that chokes the life out of innovation. But hey, at least Vanta promises to automate the suffocation.",
-            "p2": "Because nothing says 'cutting-edge startup' like desperately trying to avoid getting sued into oblivion by some alphabet soup regulatory agency.",
-            "p3": "Vendor risk? Internal risk? It's all just risk. Let's hope Vanta's AI can handle the existential dread that comes with it.",
-            "p4": "Join the webinar! You'll learn how to 'build trust.' Or, more accurately, how to *appear* trustworthy long enough to cash out."
+            "headline": "Vanta: Automating Away Your Existential Dread (and Compliance)",
+            "description": "Vanta offers automation tools for compliance with frameworks like SOC 2, ISO 27001, HIPAA, and more. It helps startups and established teams continuously monitor controls, scale programs, and answer questionnaires with AI.",
+            "p1": "Automate compliance? Sounds like automating the feeling of impending doom. Isn't the fun of a startup scrambling to meet deadlines?",
+            "p2": "AI-powered questionnaires. Because who needs human interaction when a soulless algorithm can judge your company's worth?",
+            "p3": "They promise to 'reinforce your security foundation.' As if any foundation in this market is truly secure. More like a house of cards in a hurricane.",
+            "p4": "Vendor risk management? Finally, a tool to help you blame someone else when things go sideways. Let the buck-passing begin!"
         },
         {
             "category": "Entrepreneurs",
-            "headline": "Intel CEO: From Board Member to Savior?",
-            "description": "Lip-Bu Tan has been appointed CEO of Intel, effective March 18. This follows the removal of Pat Gelsinger on December 2nd after a period marked by significant financial losses, layoffs, and the abandonment of various projects. Intel reported a staggering $18.76 billion loss in 2024, its worst performance since 1986.",
-            "p1": "Booted the CEO, eh? Guess 'thinking different' just wasn't enough to stop the bleeding. Innovation or liquidation?",
-            "p2": "Tan was already on the board, a 'trusted' insider. Because who better to steer a sinking ship than the guy who helped design the iceberg?",
-            "p3": "$18.76 billion loss. That's not a loss, that's a modern art installation showcasing the ephemeral nature of tech dominance. It\u2019s a bold statement.",
-            "p4": "From board member to CEO. It\u2019s a classic tale: \u2018I can fix the problem I contributed to\u2019 said no one ever. Good Luck Lip-Bu Tan."
+            "headline": "Intel Gets a New Captain: Sinking Ship Still Sinking?",
+            "description": "Lip-Bu Tan replaces Pat Gelsinger as Intel CEO after a massive $18.76 billion loss in 2024. Tan, previously on Intel's board, now faces the challenge of reviving the struggling chip giant.",
+            "p1": "Another CEO steps up to the plate, ready to be the hero...or the fall guy. Place your bets now!",
+            "p2": "$18.76 billion loss? That's not a loss, that's a bonfire of shareholder value. Someone get the marshmallows.",
+            "p3": "Tan was already on the board. So, he's either part of the problem or delusional enough to think he can fix it. Either way, entertaining!",
+            "p4": "First annual loss since 1986. Ah, the good old days when Intel could do no wrong. Now it's just another aging tech dinosaur facing extinction."
         },
         {
             "category": "Artificial Intelligence",
-            "headline": "Google's Robot Army: Coming to Take Your Job (and Maybe Your Wallet).",
-            "description": "Google DeepMind has unveiled Gemini Robotics, a vision-language-action (VLA) model designed to equip robots with general-purpose capabilities. Built on Gemini 2.0, this AI model enables robots to understand and respond to instructions, adapt to changing environments, and perform a wide range of tasks with human-like dexterity.",
-            "p1": "Ah yes, the rise of the machines. Google promises they'll be 'helpful.' But who asked for help being replaced?",
-            "p2": "They can understand instructions and respond? Great. Now they can ignore me with even more precision.",
-            "p3": "Human-like dexterity. Just what we need, robots that can steal our jobs *and* pick our pockets.",
-            "p4": "Gemini Robotics: because humans were just getting too comfortable with being the dominant species. We asked for it."
+            "headline": "Google's Gemini Robot: Will It Replace You or Just Judge You?",
+            "description": "Google DeepMind's Gemini Robotics, built on Gemini 2.0, aims to create general-purpose robots capable of performing a wide range of real-world tasks by understanding instructions and adapting to new environments.",
+            "p1": "General-purpose robots? Finally, a machine that can do all the chores you hate, while simultaneously plotting your demise.",
+            "p2": "Built on Gemini 2.0. So, it can hallucinate just like the rest of us. Progress!",
+            "p3": "Capable of understanding and responding quickly. Perfect for gaslighting and passive-aggressive behavior.",
+            "p4": "Adept with dealing with new objects. Meaning it will be just as confused by your love life as your therapist."
         }
     ]
 }
