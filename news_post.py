@@ -6,19 +6,14 @@ import glob
 from PIL import Image, ImageDraw, ImageFont
 from instagrapi import Client, exceptions
 
+import convert_with_gemini
+
 # Load Instagram login details
 with open("config.json") as f:
     config = json.load(f)
 
 USERNAME = config["username"]
 PASSWORD = config["password"]
-
-# Load news data
-with open("news.json") as f:
-    news_data = json.load(f)
-
-# Get the news posts list directly from the JSON structure
-news_list = news_data["posts"]
 
 # Function to wrap text
 def wrap_text(text, font, max_width, draw):
@@ -55,35 +50,35 @@ def create_news_image(category, headline, description, p1, p2, p3, p4, output_pa
 
     max_width = img.width - 200
     x_start = 100
-    y_offset = 150
+    y_offset = 350
 
     for line in wrap_text(headline, font_headline, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="black", font=font_headline)
+        draw.text((x_start, y_offset), line, fill="white", font=font_headline,align="center")
         y_offset += font_headline.size + 10
 
     y_offset += 20
     for line in wrap_text(description, font_description, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="black", font=font_description)
+        draw.text((x_start, y_offset), line, fill="white", font=font_description)
         y_offset += font_description.size + 5
 
     y_offset += 30
     for line in wrap_text("  " + p1, font_paragraph, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="black", font=font_paragraph)
+        draw.text((x_start, y_offset), line, fill="white", font=font_paragraph)
         y_offset += font_paragraph.size + 5
 
     y_offset += 10
     for line in wrap_text("  " + p2, font_paragraph, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="black", font=font_paragraph)
+        draw.text((x_start, y_offset), line, fill="white", font=font_paragraph)
         y_offset += font_paragraph.size + 5
         
     y_offset += 10
     for line in wrap_text("  " + p3, font_paragraph, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="black", font=font_paragraph)
+        draw.text((x_start, y_offset), line, fill="white", font=font_paragraph)
         y_offset += font_paragraph.size + 5
         
     y_offset += 10
     for line in wrap_text("  " + p4, font_paragraph, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="black", font=font_paragraph)
+        draw.text((x_start, y_offset), line, fill="white", font=font_paragraph)
         y_offset += font_paragraph.size + 5
 
     os.makedirs("output", exist_ok=True)
@@ -151,16 +146,38 @@ def post_with_retry(cl, image_path, caption, max_retries=3, delay=5):
 # Process news & post
 def process_and_post():
     delete_images("output")
-    category_order = [
-      "Startups","Artificial Intelligence","Entrepreneurs"
-]
-    cl = login_with_retry()
-    if not cl:
+    category_order = ["Startups", "Artificial Intelligence", "Entrepreneurs"]
+     # Login to Instagram
+    # cl = login_with_retry()
+    # if not cl:
+    #     return
+    # Fetching news and convert to humour
+    try:
+        convert_with_gemini.generate_and_save()
+        print("✅ News fetched and converted to humour.")
+    except Exception as e:
+        print(f"❌ Error fetching news or converting to humour: {e}")
         return
     
+
+
+    
+        # Load news data
+    with open("news.json") as f:
+        news_data = json.load(f)
+
+    # Flatten news articles
+    news_list = []
+    for category, articles in news_data["posts"].items():
+        if isinstance(articles, list):  
+            news_list.extend(articles)
+        elif isinstance(articles, dict):  
+            news_list.append(articles)
+
+    # Process news
     for category in category_order:
-        filtered_news = [news for news in news_list if news["category"] == category]
-        
+        print(f"Category: {category} News list: {news_list}")
+        filtered_news = [news for news in news_list if news.get("category") == category]
         if not filtered_news:
             print(f"⚠️ No news items for {category}. Skipping...")
             continue
@@ -186,10 +203,11 @@ def process_and_post():
                 f"#TechNews #Innovation #{category.replace(' & ', '').replace(' ', '')}"
             )
 
-            post_with_retry(cl, img_jpg, caption)
-            sleep_time = random.randint(60, 180)  # Random delay between 1-3 minutes
-            print(f"⏳ Waiting {sleep_time} seconds before next post...")
-            time.sleep(sleep_time)
+            # post_with_retry(cl, img_jpg, caption)
+            # sleep_time = random.randint(60, 180)  # Random delay between 1-3 minutes
+            # print(f"⏳ Waiting {sleep_time} seconds before next post...")
+            # time.sleep(sleep_time)
+
 
 if __name__ == "__main__":
     process_and_post()

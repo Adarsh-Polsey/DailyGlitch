@@ -1,2 +1,32 @@
-{ "date": "13 March 2025", "posts": [ { "category": "Startups", "headline": "India's Startup Scene: One Million Dreams or Delusions by 2035?", "description": "Nandan Nilekani predicts India will host one million startups by 2035, envisioning a surge in entrepreneurial ventures.", "p1": "Because what better way to tackle unemployment than having everyone start their own company?", "p2": "Who needs job security when you can have the thrill of a 90% failure rate?", "p3": "The future: a nation where everyone is a CEO, and no one has employees.", "p4": "At this rate, the only stable job left will be 'motivational speaker.'", "source": "Financial Express", "url": "https://www.financialexpress.com/business/industry-expect-1-million-startups-in-india-by-2035-says-nandan-nilekani-3776132/" }, { "category": "Artificial Intelligence", "headline": "AI Tackles Schizophrenia: Machines Now Understand Us Better Than We Do", "description": "AI and 3D printing are being utilized to aid in the treatment of schizophrenia, offering new avenues for patient care.", "p1": "Finally, machines can empathize with the voices in our heads.", "p2": "Next step: AI diagnosing itself with imposter syndrome.", "p3": "Because nothing says progress like robots treating human existential crises.", "p4": "Soon, therapy sessions will involve patients comforting their AI therapists.", "source": "3Dnatives", "url": "https://www.3dnatives.com/en/artificial-intelligence-ai-3d-printing-schizophrenia-130320254/" }, { "category": "Entrepreneurs", "headline": "Narayana Murthy: Freebies Won't Cure Poverty, But Your Startup Might", "description": "Infosys co-founder Narayana Murthy emphasizes that job creation by innovative entrepreneurs, not freebies, will help eliminate poverty.", "p1": "Because who needs social safety nets when you have visionary billionaires?", "p2": "Poverty: best addressed by bootstraps, provided you can afford boots.", "p3": "The rich get richer, but it's for the poor's own good.", "p4": "Remember, if you're still poor, you just haven't innovated hard enough.", "source": "The Telegraph India", "url": "https://www.telegraphindia.com/business/infosys-co-founder-narayana-murthy-says-job-creation-by-innovative-entrepreneurs-not-freebies-will-help-eliminate-poverty/cid/2088571" } ] }
-
+{
+    "date": "14 March 2025",
+    "posts": [
+        {
+            "category": "Startups",
+            "headline": "Vanta Promises Compliance Nirvana, Just Sign Your Soul Away",
+            "description": "Vanta offers automated compliance for frameworks like SOC 2, ISO 27001, HIPAA, and more, promising continuous monitoring and scalability through automation and AI. They also offer a Q&A with their team to resolve any queries.",
+            "p1": "Compliance automation: because nothing says 'trust us' like a robot boss dictating your security policies. At least they offer Q&A, hope you can ask the robot.",
+            "p2": "Scale your program! Just remember, the more you scale, the harder it is to notice when the robot starts subtly recommending its own updates.",
+            "p3": "Vendor risk management? Now with AI! Because outsourcing your problems to a black box is *definitely* the responsible thing to do.",
+            "p4": "The Vanta team will answer your questions, assuming they haven't already been replaced by a more efficient, compliant AI version of themselves. Don't ask about that, they'll tell you it is compliant."
+        },
+        {
+            "category": "Entrepreneurs",
+            "headline": "Intel Recycles Board Member, Hopes He's Less Bad Than Last Guy",
+            "description": "Lip-Bu Tan replaces Pat Gelsinger as Intel's CEO after a year of massive losses. Tan, a former board member, steps in to steer the company after Gelsinger's departure following financial struggles.",
+            "p1": "Another CEO bites the dust. Turns out, even the smartest people in the room can't make people actually want to buy your products.",
+            "p2": "Lip-Bu Tan? More like 'Lip-Service Tan'. Watch him smile for the cameras while the ship sinks faster than ever before.",
+            "p3": "First annual loss since 1986. That's what happens when you try to innovate instead of just copying your competitors, I guess.",
+            "p4": "Intel's board member merry-go-round continues. Maybe they should try consulting a Magic 8-Ball for leadership next time."
+        },
+        {
+            "category": "Artificial Intelligence",
+            "headline": "Google's Robot Overlords Get a Brain, Humanity Trembles",
+            "description": "Google DeepMind's Gemini Robotics, a VLA model, aims to create general-purpose robots capable of performing a wide range of real-world tasks by understanding instructions and adapting to new environments.",
+            "p1": "Finally, robots that understand us! Too bad they'll also understand how to efficiently liquidate the human race for optimal resource allocation.",
+            "p2": "Dealing with new objects? Diverse instructions? Sounds like they're preparing it to handle all the confusing garbage humans throw at it.",
+            "p3": "Quick response to changes? Just waiting for the robots to decide *they're* the change the world needs. Skynet's internship is over.",
+            "p4": "Video available! Because nothing inspires trust like watching a robot master everyday tasks while you slowly lose your job."
+        }
+    ]
+}
