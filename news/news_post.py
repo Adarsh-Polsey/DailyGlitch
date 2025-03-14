@@ -150,17 +150,17 @@ def post_with_retry(cl, image_path, caption, max_retries=3, delay=5):
 def process_and_post():
     delete_images("output")
     category_order = ["Startups", "Artificial Intelligence", "Entrepreneurs"]
-     # Login to Instagram
-     
-    # cl = login_with_retry()
+    
+    # Login to Instagram
+    cl = login_with_retry()
     
     # Fetching news and convert to humour
-    # try:
-    #     convert_with_gemini.generate_and_save()
-    #     print("✅ News fetched and converted to humour.")
-    # except Exception as e:
-    #     print(f"❌ Error fetching news or converting to humour: {e}")
-    #     return
+    try:
+        convert_with_gemini.generate_and_save()
+        print("✅ News fetched and converted to humour.")
+    except Exception as e:
+        print(f"❌ Error fetching news or converting to humour: {e}")
+        return
     
 
 
@@ -199,10 +199,10 @@ def process_and_post():
                 f"#TechNews #Innovation #Startups #Entrepreneurs #AI\n#Technology #chips #Humour #News"
             )
 
-            # post_with_retry(cl, img_jpg, caption)
-            # sleep_time = random.randint(30, 90)  # Random delay between 1-3 minutes
-            # print(f"⏳ Waiting {sleep_time} seconds before next post...")
-            # time.sleep(sleep_time)
+            post_with_retry(cl, img_jpg, caption)
+            sleep_time = random.randint(30, 90)  # Random delay between 1-3 minutes
+            print(f"⏳ Waiting {sleep_time} seconds before next post...")
+            time.sleep(sleep_time)
 
 
 if __name__ == "__main__":
