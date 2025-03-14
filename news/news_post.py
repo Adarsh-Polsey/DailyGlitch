@@ -9,7 +9,10 @@ from instagrapi import Client, exceptions
 import convert_with_gemini
 
 # Load Instagram login details
-with open("config.json") as f:
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), "..")) 
+config_path = os.path.join(parent_dir, "config.json")
+
+with open(config_path) as f:
     config = json.load(f)
 
 USERNAME = config["username"]
@@ -149,15 +152,15 @@ def process_and_post():
     category_order = ["Startups", "Artificial Intelligence", "Entrepreneurs"]
      # Login to Instagram
      
-    cl = login_with_retry()
+    # cl = login_with_retry()
     
     # Fetching news and convert to humour
-    try:
-        convert_with_gemini.generate_and_save()
-        print("✅ News fetched and converted to humour.")
-    except Exception as e:
-        print(f"❌ Error fetching news or converting to humour: {e}")
-        return
+    # try:
+    #     convert_with_gemini.generate_and_save()
+    #     print("✅ News fetched and converted to humour.")
+    # except Exception as e:
+    #     print(f"❌ Error fetching news or converting to humour: {e}")
+    #     return
     
 
 
@@ -196,10 +199,10 @@ def process_and_post():
                 f"#TechNews #Innovation #Startups #Entrepreneurs #AI\n#Technology #chips #Humour #News"
             )
 
-            post_with_retry(cl, img_jpg, caption)
-            sleep_time = random.randint(30, 90)  # Random delay between 1-3 minutes
-            print(f"⏳ Waiting {sleep_time} seconds before next post...")
-            time.sleep(sleep_time)
+            # post_with_retry(cl, img_jpg, caption)
+            # sleep_time = random.randint(30, 90)  # Random delay between 1-3 minutes
+            # print(f"⏳ Waiting {sleep_time} seconds before next post...")
+            # time.sleep(sleep_time)
 
 
 if __name__ == "__main__":
