@@ -1,9 +1,10 @@
+import datetime
 import time
 import random
 import json
 import os
 import glob
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 from instagrapi import Client, exceptions
 
 # Load Instagram login details
@@ -13,88 +14,105 @@ config_path = os.path.join(parent_dir, "config.json")
 with open(config_path) as f:
     config = json.load(f)
 
-USERNAME = config["username"]
-PASSWORD = config["password"]
+USERNAME = config["story_username"]
+PASSWORD = config["story_password"]
 
-# Function to wrap text
-def wrap_text(text, font, max_width, draw):
-    wrapped_lines = []
+# Function to wrap text within a given width
+def wrap_text(text, font, max_width):
     words = text.split()
-    line = ""
+    lines = []
+    current_line = ""
 
     for word in words:
-        test_line = line + " " + word if line else word
-        bbox = draw.textbbox((0, 0), test_line, font=font)
-        line_width = bbox[2] - bbox[0]
+        test_line = f"{current_line} {word}".strip()
+        text_width = font.getbbox(test_line)[2]  
 
-        if line_width <= max_width:
-            line = test_line
+        if text_width <= max_width:
+            current_line = test_line
         else:
-            wrapped_lines.append(line)
-            line = word
+            lines.append(current_line)
+            current_line = word
 
-    wrapped_lines.append(line)  # Add last line
-    return wrapped_lines
+    if current_line:
+        lines.append(current_line)
 
-# Function to generate image with wrapped text
-def create_news_image(category, headline, description, p1, p2, p3, p4, output_path):
-    img = Image.open("templates/template.jpg")
-    draw = ImageDraw.Draw(img)
-    font_head = "font/font_headline.ttf"
-    font_desc = "font/font_description.ttf"
-    font_para = "font/font_paragraph.ttf"
+    return lines
 
-    # Load fonts
-    font_headline = ImageFont.truetype(font_head, 40)
-    font_description = ImageFont.truetype(font_desc, 30)
-    font_paragraph = ImageFont.truetype(font_para, 30)
+# Reduce image opacity and apply blur
+def process_image(num):
+    img_path = f"templates/{num}.jpeg"
+    if not os.path.exists(img_path):
+        raise FileNotFoundError(f"Image not found: {img_path}")
+    
+    image = Image.open(img_path).convert("RGBA")
 
-    max_width = img.width - 200
-    x_start = 100
-    y_offset = 350
+    # 🌟 Step 1: Crop a little (remove 5% from each side)
+    w, h = image.size
+    crop_x = int(w * 0.05)
+    crop_y = int(h * 0.05)
+    image = image.crop((crop_x, crop_y, w - crop_x, h - crop_y))
 
-    for line in wrap_text(headline, font_headline, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="white", font=font_headline,align="center")
-        y_offset += font_headline.size + 10
+    # 🌟 Step 2: Reduce Brightness (to 80%)
+    enhancer = ImageEnhance.Brightness(image)
+    image = enhancer.enhance(0.5)
 
-    y_offset += 20
-    for line in wrap_text(description, font_description, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="white", font=font_description)
-        y_offset += font_description.size + 5
+    # 🌟 Step 3: Reduce Opacity to 50%
+    alpha = image.split()[3].point(lambda p: p * 0.1)  
+    image.putalpha(alpha)
 
-    y_offset += 30
-    for line in wrap_text("  " + p1, font_paragraph, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="white", font=font_paragraph)
-        y_offset += font_paragraph.size + 5
+    # 🌟 Step 4: Apply Gaussian Blur
+    return image.filter(ImageFilter.GaussianBlur(radius=5))
 
-    y_offset += 10
-    for line in wrap_text("  " + p2, font_paragraph, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="white", font=font_paragraph)
-        y_offset += font_paragraph.size + 5
-        
-    y_offset += 10
-    for line in wrap_text("  " + p3, font_paragraph, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="white", font=font_paragraph)
-        y_offset += font_paragraph.size + 5
-        
-    y_offset += 10
-    for line in wrap_text("  " + p4, font_paragraph, max_width, draw):
-        draw.text((x_start, y_offset), line, fill="white", font=font_paragraph)
-        y_offset += font_paragraph.size + 5
-
-    os.makedirs("output", exist_ok=True)
-    img.save(output_path)
-    print(f"✅ Image saved: {output_path}")
-
-# Convert PNG to JPEG
-def convert_to_jpg(png_path):
-    img = Image.open(png_path)
-    rgb_img = img.convert('RGB')
-    jpg_path = png_path.rsplit(".", 1)[0] + ".jpg"
-    rgb_img.save(jpg_path, "JPEG", quality=95)
+# Convert image to JPEG
+def convert_to_jpg(img, output_path):
+    jpg_path = output_path.replace(".png", ".jpg")
+    img.convert('RGB').save(jpg_path, "JPEG", quality=95)
     return jpg_path
 
-# Function to delete images
+# Create story image
+def create_story_image(saga_title, path_title, content, output_path):
+    num = datetime.datetime.now().day - 14
+    print(f"📅 Selected Saga Number: {num}")
+
+    try:
+        img = process_image(num)
+    except FileNotFoundError as e:
+        print(f"❌ Error: {e}")
+        return
+
+    draw = ImageDraw.Draw(img)
+    font_path = "font/font_writing.ttf"
+
+    try:
+        font_content = ImageFont.truetype(font_path, 40)
+    except IOError:
+        print("❌ Error: Font file not found.")
+        return
+
+    max_width = img.width - 200
+    x_start, y_offset = 100, 100
+
+    # Draw title and content
+    for i, text in enumerate([f"{saga_title} : {path_title}", content]):
+        lines = wrap_text(text, font_content, max_width)
+        
+        if i == 0:
+            title_text = lines[0]  # First line (title)
+            title_width = font_content.getbbox(title_text)[2] - font_content.getbbox(title_text)[0]
+            title_x = (img.width - title_width) // 2  # Center X
+            draw.text((title_x, y_offset), title_text, fill="white", font=font_content)
+            y_offset += font_content.getbbox(title_text)[3] - font_content.getbbox(title_text)[1] + 20  # Extra line break
+        
+        else:
+            for line in lines:
+                draw.text((x_start, y_offset), line, fill="white", font=font_content)
+                y_offset += font_content.getbbox(line)[3] - font_content.getbbox(line)[1] + 10  
+        os.makedirs("output", exist_ok=True)
+        convert_to_jpg(img, output_path)
+        img.convert("RGB").save(output_path, "JPEG", quality=95)
+        print(f"✅ Image saved: {output_path}")
+
+# Delete old images
 def delete_images(folder="output"):
     for file in glob.glob(os.path.join(folder, "*.jpg")) + glob.glob(os.path.join(folder, "*.png")):
         try:
@@ -103,7 +121,7 @@ def delete_images(folder="output"):
         except Exception as e:
             print(f"⚠️ Error deleting {file}: {e}")
 
-# Function to retry login
+# Retry login with exponential backoff
 def login_with_retry(max_retries=5, delay=5):
     cl = Client()
     for attempt in range(max_retries):
@@ -122,12 +140,12 @@ def login_with_retry(max_retries=5, delay=5):
         except Exception as e:
             print(f"⚠️ Login attempt {attempt + 1} failed: {e}")
 
-        time.sleep(delay * (2 ** attempt))  # Exponential backoff
+        time.sleep(delay * (2 ** attempt))  
 
     print("❌ Failed to log in after multiple attempts.")
     return None
 
-# Function to retry post upload
+# Retry post upload
 def post_with_retry(cl, image_path, caption, max_retries=3, delay=5):
     for attempt in range(max_retries):
         try:
@@ -147,61 +165,46 @@ def post_with_retry(cl, image_path, caption, max_retries=3, delay=5):
 # Process news & post
 def process_and_post():
     delete_images("output")
-    category_order = ["Startups", "Artificial Intelligence", "Entrepreneurs"]
-     # Login to Instagram
-     
+
     # cl = login_with_retry()
-    
-    # Fetching news and convert to humour
-    # try:
-    #     convert_with_gemini.generate_and_save()
-    #     print("✅ News fetched and converted to humour.")
-    # except Exception as e:
-    #     print(f"❌ Error fetching news or converting to humour: {e}")
+    # if not cl:
     #     return
+
+    # Load story data
+    with open("whispers_of_the_glowing_mural.json") as f:
+        story_data = json.load(f)
+
+    num = datetime.datetime.now().day - 14
+    print(f"📅 Selected Saga Number: {num}")
+
+    filtered_story = [story for story in story_data if story["Saga"] == num]
     
+    if not filtered_story:
+        print(f"⚠️ No story found for Saga {num}. Skipping...")
+        return
 
+    # Extract story
+    story = filtered_story[0]
+    img_path = f"output/{num}.jpeg"
 
-    
-        # Load news data
-    with open("news.json") as f:
-        news_data = json.load(f)
+    # Create story image
+    create_story_image(
+        saga_title=story["Title"],  
+        path_title=story["Paths"][0]["Title"],  
+        content=story["Paths"][0]["Text"],  
+        output_path=img_path
+    )
 
-    news_list = news_data["posts"]
-    # Process news
-    for category in category_order:
-        print(f"Category: {category} News list: {news_data}")
-        filtered_news = [news for news in news_list if news["category"] == category]
-        if not filtered_news:
-            print(f"⚠️ No news items for {category}. Skipping...")
-            continue
-        
-        for news in filtered_news:
-            img_path = f"output/{news['headline'][:30].replace(' ', '_')}.png"
-            create_news_image(
-                category, 
-                news["headline"], 
-                news["description"], 
-                news["p1"], 
-                news["p2"],
-                news["p3"],
-                news["p4"],
-                img_path
-            )
-            img_jpg = convert_to_jpg(img_path)
+    # Construct caption
+    caption = (
+        f"{story['Paths'][0]['Title']}\n\n{story['Paths'][0]['Text']}\n\n"
+        f"#Romane #Magic #Story #Readers #College\n#Ernakulam #Kerala #India #Kochi"
+    )
 
-            # Create caption with all 4 paragraphs
-            caption = (
-                f"{news['headline']}\n\n{news['description']}\n"
-                f"  {news['p1']}\n  {news['p2']}\n  {news['p3']}\n  {news['p4']}\n\n"
-                f"#TechNews #Innovation #Startups #Entrepreneurs #AI\n#Technology #chips #Humour #News"
-            )
-
-            # post_with_retry(cl, img_jpg, caption)
-            # sleep_time = random.randint(30, 90)  # Random delay between 1-3 minutes
-            # print(f"⏳ Waiting {sleep_time} seconds before next post...")
-            # time.sleep(sleep_time)
-
+    # post_with_retry(cl, img_path, caption)
+    # sleep_time = random.randint(30, 90)
+    # print(f"⏳ Waiting {sleep_time} seconds before next post...")
+    # time.sleep(sleep_time)
 
 if __name__ == "__main__":
     process_and_post()
