@@ -22,10 +22,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 🔑 Set Up Secrets
-        env:
-          STORY_USERNAME: ${{ secrets.STORY_USERNAME }}
-          STORY_PASSWORD: ${{ secrets.STORY_PASSWORD }}
-        run: echo "$CONFIG_JSON" > config.json
+        run: |
+          echo "STORY_USERNAME=${{ secrets.STORY_USERNAME }}" >> .env
+          echo "STORY_PASSWORD=${{ secrets.STORY_PASSWORD }}" >> .env
 
       - name: 🚀 Run News Posting Script
         run: python story/post_story.py

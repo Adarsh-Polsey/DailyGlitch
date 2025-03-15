@@ -21,11 +21,11 @@ jobs:
       - name: 📦 Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: 🔑 Set Up Secrets
-        env:
-          NEWS_USERNAME: ${{ secrets.NEWS_USERNAME }}
-          NEWS_PASSWORD: ${{ secrets.NEWS_PASSWORD }}
-        run: echo "$CONFIG_JSON" > config.json
+      - name: 🔑 Set Up Environment Variables
+        run: |
+          echo "NEWS_USERNAME=${{ secrets.NEWS_USERNAME }}" >> .env
+          echo "NEWS_PASSWORD=${{ secrets.NEWS_PASSWORD }}" >> .env
+          echo "APIKEY=${{ secrets.APIKEY }}" >> .env
 
       - name: 🚀 Run News Posting Script
         run: python news/news_post.py
