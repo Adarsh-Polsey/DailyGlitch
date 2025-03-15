@@ -22,10 +22,14 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 🔑 Set Up Environment Variables
+        env:
+          NEWS_USERNAME: ${{ secrets.NEWS_USERNAME }}
+          NEWS_PASSWORD: ${{ secrets.NEWS_PASSWORD }}
+          APIKEY: ${{ secrets.APIKEY }}
         run: |
-          echo "NEWS_USERNAME=${{ secrets.NEWS_USERNAME }}" >> .env
-          echo "NEWS_PASSWORD=${{ secrets.NEWS_PASSWORD }}" >> .env
-          echo "APIKEY=${{ secrets.APIKEY }}" >> .env
+          echo "NEWS_USERNAME=$NEWS_USERNAME" >> .env
+          echo "NEWS_PASSWORD=$NEWS_PASSWORD" >> .env
+          echo "APIKEY=$APIKEY" >> .env
 
       - name: 🚀 Run News Posting Script
         run: python news/news_post.py

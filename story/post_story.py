@@ -17,6 +17,7 @@ if os.getenv("GITHUB_ACTIONS") is None:
    load_dotenv()
 USERNAME = os.getenv("STORY_USERNAME")
 PASSWORD = os.getenv("STORY_PASSWORD")
+
 if not USERNAME or not PASSWORD:
     raise ValueError("❌ Missing authentication credentials")
 
