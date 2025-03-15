@@ -23,7 +23,8 @@ jobs:
 
       - name: 🔑 Set Up Secrets
         env:
-          CONFIG_JSON: ${{ secrets.CONFIG_JSON }}
+          STORY_USERNAME: ${{ secrets.STORY_USERNAME }}
+          STORY_PASSWORD: ${{ secrets.STORY_PASSWORD }}
         run: echo "$CONFIG_JSON" > config.json
 
       - name: 🚀 Run News Posting Script

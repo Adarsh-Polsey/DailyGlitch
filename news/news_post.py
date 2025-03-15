@@ -4,19 +4,19 @@ import json
 import os
 import glob
 from PIL import Image, ImageDraw, ImageFont
+from dotenv import load_dotenv
 from instagrapi import Client, exceptions
 
 import convert_with_gemini
 
-# Load Instagram login details
-parent_dir = os.path.abspath(os.path.join(os.getcwd(), "..")) 
-config_path = os.path.join(parent_dir, "config.json")
+if os.getenv("GITHUB_ACTIONS") is None:
+   load_dotenv()
+USERNAME = os.getenv("NEWS_USERNAME")
+PASSWORD = os.getenv("NEWS_PASSWORD")
+if not USERNAME or not PASSWORD:
+    raise ValueError("❌ Missing authentication credentials")
 
-with open(config_path) as f:
-    config = json.load(f)
-
-USERNAME = config["username"]
-PASSWORD = config["password"]
+print(f"✅ Using username: {USERNAME}")
 
 # Function to wrap text
 def wrap_text(text, font, max_width, draw):

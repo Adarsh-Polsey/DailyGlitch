@@ -5,17 +5,22 @@ import json
 import os
 import glob
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
+from dotenv import load_dotenv
 from instagrapi import Client, exceptions
 
 # Load Instagram login details
 parent_dir = os.path.abspath(os.path.join(os.getcwd(), "..")) 
 config_path = os.path.join(parent_dir, "config.json")
 
-with open(config_path) as f:
-    config = json.load(f)
 
-USERNAME = config["story_username"]
-PASSWORD = config["story_password"]
+if os.getenv("GITHUB_ACTIONS") is None:
+   load_dotenv()
+USERNAME = os.getenv("STORY_USERNAME")
+PASSWORD = os.getenv("STORY_PASSWORD")
+if not USERNAME or not PASSWORD:
+    raise ValueError("❌ Missing authentication credentials")
+
+print(f"✅ Using username: {USERNAME}")
 
 # Function to wrap text within a given width
 def wrap_text(text, font, max_width):

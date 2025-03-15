@@ -1,20 +1,18 @@
+import os
 import json,subprocess,sys,re
 from typing import Dict, Any, Optional
 from datetime import datetime
 
+from dotenv import load_dotenv
+
 import fetch_news
 
-def load_config(config_path: str = "config.json") -> Dict[str, Any]:
-    """Load configuration from JSON file."""
-    try:
-        with open("config.json") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"Configuration file '{config_path}' not found.")
-        sys.exit(1)
-    except json.JSONDecodeError:
-        print(f"Invalid JSON in configuration file '{config_path}'.")
-        sys.exit(1)
+if os.getenv("GITHUB_ACTIONS") is None:
+    load_dotenv()
+
+API_KEY=os.getenv("APIKEY")
+if not API_KEY:
+    raise ValueError("❌ Missing API key")
 
 def call_gemini_api(api_key: str, prompt: str, model: str = "gemini-2.0-flash") -> Optional[Dict[str, Any]]:
     """Call the Gemini API with the given prompt."""
@@ -115,8 +113,7 @@ def save_to_file(data: Dict[str, Any], filepath: str = "news.json") -> bool:
 def generate_and_save():
     # Load configuration
     try:
-        config = load_config()
-        api_key = config["APIKEY"]
+        api_key = API_KEY
         if not api_key:
             print("API key not found in configuration.")
             sys.exit(1)
