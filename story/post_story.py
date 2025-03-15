@@ -8,16 +8,14 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 from dotenv import load_dotenv
 from instagrapi import Client, exceptions
 
-# Load Instagram login details
-parent_dir = os.path.abspath(os.path.join(os.getcwd(), "..")) 
-config_path = os.path.join(parent_dir, "config.json")
-
-
+# Load environment variables
 if os.getenv("GITHUB_ACTIONS") is None:
    load_dotenv()
-USERNAME = os.getenv("STORY_USERNAME")
-PASSWORD = os.getenv("STORY_PASSWORD")
-
+   USERNAME = os.getenv("STORY_USERNAME")
+   PASSWORD = os.getenv("STORY_PASSWORD")
+else :
+    USERNAME = os.environ["STORY_USERNAME"]
+    PASSWORD = os.environ["STORY_PASSWORD"]
 if not USERNAME or not PASSWORD:
     raise ValueError("❌ Missing authentication credentials")
 

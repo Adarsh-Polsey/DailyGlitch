@@ -7,10 +7,12 @@ from dotenv import load_dotenv
 
 import fetch_news
 
-if os.getenv("GITHUB_ACTIONS") is None:
-    load_dotenv()
 
-API_KEY=os.getenv("APIKEY")
+if os.getenv("GITHUB_ACTIONS") is None:
+   load_dotenv()
+   API_KEY=os.getenv("APIKEY")
+else :
+    USERNAME = os.environ["APIKEY"]
 if not API_KEY:
     raise ValueError("❌ Missing API key")
 

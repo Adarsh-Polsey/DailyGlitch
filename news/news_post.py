@@ -11,8 +11,11 @@ import convert_with_gemini
 
 if os.getenv("GITHUB_ACTIONS") is None:
    load_dotenv()
-USERNAME = os.getenv("NEWS_USERNAME")
-PASSWORD = os.getenv("NEWS_PASSWORD")
+   USERNAME = os.getenv("NEWS_USERNAME")
+   PASSWORD = os.getenv("NEWS_PASSWORD")
+else :
+    USERNAME = os.environ["NEWS_USERNAME"]
+    PASSWORD = os.environ["NEWS_PASSWORD"]
 if not USERNAME or not PASSWORD:
     raise ValueError("❌ Missing authentication credentials")
 
