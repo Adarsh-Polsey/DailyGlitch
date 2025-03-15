@@ -26,10 +26,13 @@ jobs:
           STORY_USERNAME: ${{ secrets.STORY_USERNAME }}
           STORY_PASSWORD: ${{ secrets.STORY_PASSWORD }}
         run: |
-          echo "STORY_USERNAME=${{ secrets.STORY_USERNAME }}" >> .env
-          echo "STORY_PASSWORD=${{ secrets.STORY_PASSWORD }}" >> .env
+          if [ -z "$STORY_USERNAME" ]; then echo "❌ STORY_USERNAME is missing"; exit 1; else echo "✅ STORY_USERNAME is set"; fi
+          if [ -z "$STORY_PASSWORD" ]; then echo "❌ STORY_PASSWORD is missing"; exit 1; else echo "✅ STORY_PASSWORD is set"; fi
 
       - name: 🚀 Run News Posting Script
+        env:
+          STORY_USERNAME: ${{ secrets.STORY_USERNAME }}
+          STORY_PASSWORD: ${{ secrets.STORY_PASSWORD }}
         run: python story/post_story.py
 
       # - name: 🗑️ Cleanup Output Folder
