@@ -44,7 +44,7 @@ def wrap_text(text, font, max_width):
 
 # Reduce image opacity and apply blur
 def process_image(num):
-    img_path = f"/story/templates/{num}.jpeg"
+    img_path = f"story/templates/{num}.jpeg"
     if not os.path.exists(img_path):
         raise FileNotFoundError(f"Image not found: {img_path}")
     
@@ -85,7 +85,7 @@ def create_story_image(saga_title, path_title, content, output_path):
         return
 
     draw = ImageDraw.Draw(img)
-    font_path = "/story/font/font_writing.ttf"
+    font_path = "story/font/font_writing.ttf"
 
     try:
         font_content = ImageFont.truetype(font_path, 40)
@@ -183,7 +183,7 @@ def process_and_post():
 
     # Load story data
     try:
-        with open("/story/whispers_of_the_glowing_mural.json", "r") as f:
+        with open("story/whispers_of_the_glowing_mural.json", "r") as f:
             story_data = json.load(f)
     except Exception as e:
         print(f"❌ Failed to load story data: {e}")
@@ -204,7 +204,7 @@ def process_and_post():
 
     # Generate and post images for each Path
     for i, path in enumerate(story["Paths"]):
-        img_path = f"/story/output/{num}_{i+1}.jpeg"
+        img_path = f"story/output/{num}_{i+1}.jpeg"
         create_story_image(
             saga_title=story["Title"],  
             path_title=story["Paths"][i]["Title"],  

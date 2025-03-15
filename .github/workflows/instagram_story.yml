@@ -21,6 +21,9 @@ jobs:
       - name: 📦 Install Dependencies
         run: pip install -r requirements.txt
 
+      - name: List project files
+        run: ls -R
+
       - name: 🔑 Set Up Secrets
         env:
           STORY_USERNAME: ${{ secrets.STORY_USERNAME }}
