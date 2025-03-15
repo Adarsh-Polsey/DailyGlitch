@@ -48,7 +48,7 @@ GitHub Repo → Settings → Secrets and variables → Actions → New repositor
 
 ### 5. Generate News
 ```bash
-python3 news_post.py
+python3 post_news.py
 ```
 
 ### 6. Generate Instagram Stories

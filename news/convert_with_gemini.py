@@ -128,41 +128,41 @@ def generate_and_save():
     # Fetch news
     try:
         news_data = fetch_news.fetch_news()
-        if news_data is None:
-            print("Error fetching news")
-            sys.exit(1)
-        print("News fetched successfully.")
+        #TODO : Uncomment
+        # if news_data is None or news_data == {'error': 'No headlines found'}:
+        #     print("❌ No news data found")
+        #     sys.exit(1)
     except Exception as e:
-        print(f"News fetching error: {e}")
+        print(f"❌ News fetching error: {e}")
         sys.exit(1)
     
     # Create prompt and make API call
     prompt = create_news_prompt(news_data)
     # Call the API
-    print("Calling Gemini API...")
+    print("🟡 Calling Gemini API...")
     response = call_gemini_api(api_key, prompt)
-    print("✅ API called successfully."+ response.__str__())
+    print("✅ API called successfully.")
     if response is None:
-        print("Failed to get a valid response from the API")
+        print("❌ Failed to get a valid response from the API")
         sys.exit(1)
     
     # Extract and format the JSON content
     news_items = extract_json_from_gemini_response(response)
     if not news_items:
-        print("Failed to extract news items from the API response")
+        print("❌ Failed to extract news items from the API response")
         sys.exit(1)
-    print("✅ News items extracted successfully. -    "+news_items.__str__())
+    print("✅ News items extracted successfully. -    ")
     # Format output with date
     output_data = format_output(news_items)
     print("✅ News data formatted successfully."+output_data.__str__())
     # Save the result
     if save_to_file(output_data):
-        print("News data saved to news.json")
+        print("✅ News data saved to news.json")
     else:
-        print("Failed to save news data")
+        print("❌ Failed to save news data")
         sys.exit(1)
     
-    print("Process completed successfully")
+    print("✅ Process completed successfully")
 
 if __name__ == "__main__":
     generate_and_save()

@@ -36,7 +36,7 @@ jobs:
           NEWS_USERNAME: ${{ secrets.NEWS_USERNAME }}
           NEWS_PASSWORD: ${{ secrets.NEWS_PASSWORD }}
           APIKEY: ${{ secrets.APIKEY }}
-        run: python news/news_post.py
+        run: python news/post_news.py
 
       # - name: 🗑️ Cleanup Output Folder
       #   run: rm -f output/*.jpg output/*.png
