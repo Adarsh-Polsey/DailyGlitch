@@ -1,85 +1,93 @@
-# 🚀 Daily Glitch: The Most Chaotic News Automation Ever
+# 🚀 Daily Glitch: Automated News & Stories
 
-Welcome to **Daily Glitch** – an AI-powered, **fully automated**, meme-infested, sarcasm-driven news generator that absolutely no one asked for. It scrapes, formats, and posts news like a **soulless machine**, because who needs human journalists anymore? 🤖💀
-
----
-
-## ⚡ Features That Make This Thing Dangerous
-
-- **📰 Auto-Generates News** – Because reading is too mainstream.
-- **🎨 Generates Images** – AI slaps text on a background and calls it art.
-- **📸 Auto-Posts to Instagram** – Zero effort, maximum engagement.
-- **🔒 Secure Credentials? Maybe** – We swear we didn’t push `config.json` (please don't check).
-- **🔥 Dark Humor Mode** – Because news should make you cry and laugh at the same time.
+**Daily Glitch** is an AI-powered, fully automated news generator that scrapes, formats, and posts news updates to Instagram as posts and stories.
 
 ---
 
-## 🛠 Installation: How to Summon This Beast
+## ⚡ Features
 
-### 1️⃣ Clone This Monstrosity
+- **📰 Automated News Generation** – Fetches trending news.
+- **🎨 Auto-Generated Images & Stories** – Creates visuals for posts and stories.
+- **📷 Auto-Posting to Instagram** – Hands-free content publishing.
+- **🔐 Secure Credentials** – Configured through GitHub Secrets.
+- **⏳ Fully Automated** – Fetches, formats, and posts without manual input.
+
+---
+
+## 🫠 Installation
+
+### 1. Clone the Repository
 ```bash
- git clone https://github.com/adarsh-polsey/daily_glitch.git
- cd daily_glitch
+git clone https://github.com/adarsh-polsey/daily_glitch.git
+cd daily_glitch
 ```
 
-### 2️⃣ Setup Virtual Environment (Because We Respect Python, Kinda)
+### 2. Setup Virtual Environment
 ```bash
- python3 -m venv .venv
- source .venv/bin/activate  # Mac/Linux
- .venv\Scripts\activate     # Windows
+python3 -m venv .venv
+source .venv/bin/activate  # Mac/Linux
+.venv\Scripts\activate     # Windows
 ```
 
-### 3️⃣ Install the **Magic Sauce**
+### 3. Install Dependencies
 ```bash
- python3 -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
-### 4️⃣ Configure Your Secrets Like a True Hacker 💀
+### 4. Configure Secrets
 Go to:
 ```
 GitHub Repo → Settings → Secrets and variables → Actions → New repository secret
 ```
 🔹 **Secret Name:** `CONFIG_JSON`
-🔹 **Secret Value:** Copy-paste your `config.json` file contents (don’t leak it like we almost did).
+🔹 **Secret Value:** Paste your `config.json` file contents.
 
 ---
 
-## 🚀 Running This Digital Gremlin
+## 🚀 Running the Bot
 
-### 5️⃣ Summon the News Generator 📰
+### 5. Generate News
 ```bash
- python3 news_post.py
+python3 news_post.py
 ```
 
-### 6️⃣ Manually Trigger GitHub Workflow (For Maximum Control)
+### 6. Generate Instagram Stories
 ```bash
- gh workflow run daily_glitch.yml
+python3 story_post.py
 ```
-Or just click the big scary **Run Workflow** button in GitHub Actions.
+
+### 7. Trigger GitHub Workflow
+```bash
+gh workflow run daily_glitch.yml
+```
+Or trigger it manually in **GitHub Actions**.
 
 ---
 
-## 🤖 Automating This Nonsense
+## 🤖 Automation
 
-You can manually trigger it (because AI should never have too much power). No cron jobs, no daily tasks – you are the **Master of Chaos**.
+Daily Glitch runs on **GitHub Actions** to automate daily posts and stories.
 
----
-
-## 🚨 Disclaimer (Because Laws Exist)
-- We are **not** responsible if your Instagram gets banned, hacked, or becomes sentient.
-- **Use at your own risk.** Your sanity is not our liability.
-- If this repo somehow crashes the economy, **oops.**
+🔹 **Scheduled Runs:** Configured in `.github/workflows/daily_glitch.yml`
+🔹 **Manual Control:** Run it as needed.
 
 ---
 
-## 💀 Contribute (If You Dare)
+## 🚨 Disclaimer
+- **Use at your own risk.**
+- The creators are not responsible for account restrictions or bans.
+- Ensure compliance with platform policies.
+
+---
+
+## 💀 Contributing
 
 1. Fork the repo
 2. Make a PR
-3. Pray we accept it
+3. Await review
 
 ---
 
-### 🎤 Final Words
-This bot is faster than your Wi-Fi, funnier than your dad jokes, and more automated than your last relationship. **Star ⭐ this repo or regret it forever.** 🚀🔥
+### 🎤 Final Note
+Daily Glitch is an efficient tool for automating news posts and stories. **Star ⭐ this repo if you find it useful.**
 
