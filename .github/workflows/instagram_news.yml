@@ -32,6 +32,10 @@ jobs:
           echo "APIKEY=$APIKEY" >> .env
 
       - name: 🚀 Run News Posting Script
+        env:
+          NEWS_USERNAME: ${{ secrets.NEWS_USERNAME }}
+          NEWS_PASSWORD: ${{ secrets.NEWS_PASSWORD }}
+          APIKEY: ${{ secrets.APIKEY }}
         run: python news/news_post.py
 
       # - name: 🗑️ Cleanup Output Folder
