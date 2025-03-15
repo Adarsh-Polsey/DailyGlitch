@@ -69,9 +69,16 @@ def process_image(num):
 
 # Convert image to JPEG
 def convert_to_jpg(img, output_path):
-    jpg_path = output_path.replace(".png", ".jpg")
-    img.convert('RGB').save(jpg_path, "JPEG", quality=95)
-    return jpg_path
+    print(f"📸 Converting to OUTPUT PATH: {output_path}")
+    try:
+        output_dir = os.path.dirname(output_path)
+        os.makedirs(output_dir, exist_ok=True) 
+
+        jpg_path = output_path.replace(".png", ".jpg")
+        img.convert('RGB').save(jpg_path, "JPEG", quality=95)
+        return jpg_path
+    except Exception as e:
+        raise FileNotFoundError(f"❌ Error converting to JPG: {e}")
 
 # Create story image
 def create_story_image(saga_title, path_title, content, output_path):
@@ -84,10 +91,10 @@ def create_story_image(saga_title, path_title, content, output_path):
         print(f"❌ Error: {e}")
         return
 
-    draw = ImageDraw.Draw(img)
-    font_path = "story/font/font_writing.ttf"
 
     try:
+        draw = ImageDraw.Draw(img)
+        font_path = "story/font/font_writing.ttf"
         font_content = ImageFont.truetype(font_path, 40)
     except IOError:
         print("❌ Error: Font file not found.")
@@ -113,7 +120,6 @@ def create_story_image(saga_title, path_title, content, output_path):
                 y_offset += font_content.getbbox(line)[3] - font_content.getbbox(line)[1] + 10  
         os.makedirs("output", exist_ok=True)
         convert_to_jpg(img, output_path)
-        img.convert("RGB").save(output_path, "JPEG", quality=95)
         print(f"✅ Image saved: {output_path}")
 
 # Delete old images
