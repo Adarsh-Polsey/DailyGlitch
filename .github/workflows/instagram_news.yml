@@ -3,6 +3,9 @@ name: Post News
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   post_news:
     runs-on: ubuntu-latest
