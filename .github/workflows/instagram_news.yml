@@ -1,7 +1,7 @@
 name: Post News
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   post_news:
@@ -36,5 +36,49 @@ jobs:
           APIKEY: ${{ secrets.APIKEY }}
         run: python news/reel_news.py
 
-      # - name: 🗑️ Cleanup Output Folder
-      #   run: rm -f output/*.jpg output/*.png
+      - name: 🗑️ Delete Old Releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          releases=$(gh release list --json tagName --jq '.[].tagName')
+          for tag in $releases; do
+            echo "Deleting release: $tag"
+            gh release delete $tag --yes
+            gh api -X DELETE repos/${{ github.repository }}/git/refs/tags/$tag
+          done
+        continue-on-error: true  # Prevent failures if no releases exist
+
+      - name: 🏷️ Create a Version Tag
+        run: |
+          TAG="v$(date +%Y%m%d%H%M%S)"  # Auto-generate versioned tag
+          echo "TAG=$TAG" >> $GITHUB_ENV
+          git tag $TAG
+          git push origin $TAG
+
+      - name: 📤 Upload Reels to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "news/output/reels/*.mp4"  # Upload all MP4 files
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ env.TAG }}
+          name: "Reels Release ${{ env.TAG }}"
+          body: "Auto-uploaded MP4 reels from 'news/output/reels/' 🎥"
+          draft: false
+          prerelease: false
+
+      - name: 📝 Generate Download Links File
+        run: |
+          DOWNLOAD_FILE="news/output/download_links.txt"
+          echo "Download links for the latest reels:" > $DOWNLOAD_FILE
+          for file in news/output/reels/*.mp4; do
+            filename=$(basename "$file")
+            echo "https://github.com/${{ github.repository }}/releases/download/${{ env.TAG }}/$filename" >> $DOWNLOAD_FILE
+          done
+        shell: bash
+
+      - name: 📤 Upload `download_links.txt` to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "news/output/download_links.txt"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ env.TAG }}
