@@ -242,9 +242,9 @@ def process_and_post():
 
             # Create caption with all 4 paragraphs
             caption = (
-                f"{news['headline']}\n\n{news['description']}\n"
-                f"  {news['p1']}\n  {news['p2']}\n"
-                f"#TechNews #Innovation #Startups #Entrepreneurs #AI\n#Technology #chips #Humour #News"
+                f"{news['headline']}                       {news['description']}"
+                f"  {news['p1']}  {news['p2']}"
+                f"#TechNews #Innovation #Startups #Entrepreneurs #AI  #Technology #chips #Humour #News"
             )
             captions_list.append(caption)
             save_to_file(captions_list)

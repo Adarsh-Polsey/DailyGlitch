@@ -50,7 +50,7 @@ def create_news_prompt(news_data: list) -> str:
 
     ### Format:
     - **One news per category.**
-    - **Headline:** (Max 20 words) Catchy, darkly humorous, or thought-provoking.
+    - **Headline:** (Max 20 words) negativity attracts more than positivity,use negativity as a strong hook, Catchy, darkly humorous, or thought-provoking.
     - **Description:** (50 words) Direct, No humour, should convey the news originally as what it is exactly.
     - **2 Points:** (Each 4 lines) Inject irony, satire, or brutal honesty.
 
