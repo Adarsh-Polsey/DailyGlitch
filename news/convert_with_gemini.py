@@ -12,7 +12,7 @@ if os.getenv("GITHUB_ACTIONS") is None:
    load_dotenv()
    API_KEY=os.getenv("APIKEY")
 else :
-    USERNAME = os.environ["APIKEY"]
+    API_KEY = os.environ["APIKEY"]
 if not API_KEY:
     raise ValueError("❌ Missing API key")
 
