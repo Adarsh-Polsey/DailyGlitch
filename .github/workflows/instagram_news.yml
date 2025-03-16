@@ -1,8 +1,6 @@
 name: Post News
 
 on:
-  schedule:
-    - cron: "15 18 * * *"
   workflow_dispatch: 
 
 jobs:
@@ -36,7 +34,7 @@ jobs:
           NEWS_USERNAME: ${{ secrets.NEWS_USERNAME }}
           NEWS_PASSWORD: ${{ secrets.NEWS_PASSWORD }}
           APIKEY: ${{ secrets.APIKEY }}
-        run: python news/post_news.py
+        run: python news/reel_news.py
 
       # - name: 🗑️ Cleanup Output Folder
       #   run: rm -f output/*.jpg output/*.png

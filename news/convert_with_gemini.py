@@ -4,9 +4,8 @@ from typing import Dict, Any, Optional
 from datetime import datetime
 
 from dotenv import load_dotenv
-
 import fetch_news
-
+import news_list
 
 if os.getenv("GITHUB_ACTIONS") is None:
    load_dotenv()
@@ -45,7 +44,7 @@ def call_gemini_api(api_key: str, prompt: str, model: str = "gemini-2.0-flash") 
         print(f"Failed to parse API response: {e}")
         return None
 
-def create_news_prompt(news_data: Dict[str, Any]) -> str:
+def create_news_prompt(news_data: list) -> str:
     """Create the prompt for news transformation."""
     return f"""Given text is today's news. Rewrite it with dark humor, irony, and emotional triggers while keeping the facts intact.Use simple and light words to convey the news in a high-impact manner.
 
@@ -53,7 +52,7 @@ def create_news_prompt(news_data: Dict[str, Any]) -> str:
     - **One news per category.**
     - **Headline:** (Max 20 words) Catchy, darkly humorous, or thought-provoking.
     - **Description:** (50 words) Direct, No humour, should convey the news originally as what it is exactly.
-    - **4 Points:** (Each 2 lines) Inject irony, satire, or brutal honesty.
+    - **2 Points:** (Each 4 lines) Inject irony, satire, or brutal honesty.
 
     ### Fields:
     {{  
@@ -62,8 +61,6 @@ def create_news_prompt(news_data: Dict[str, Any]) -> str:
     "description",
     "p1",
     "p2",
-    "p3",
-    "p4",
     }}
 
     ### Tone:
@@ -73,21 +70,26 @@ def create_news_prompt(news_data: Dict[str, Any]) -> str:
     - **Emotional triggers that hit where it hurts.**
 
     ### News:
-    {json.dumps(news_data, indent=2)}
+    {news_data}
     """
 
-def extract_json_from_gemini_response(response: Dict[str, Any]) -> Optional[list]:
+def extract_json_from_gemini_response(response: Dict[str, Any]) -> Optional[list[dict]]:
     """Extract the JSON content from Gemini API response."""
-    news_items = []
     try:
+        # If the response is a list, take the first element
+        if isinstance(response, list):
+            response = response[0] if response else {}
+
         if "candidates" in response and response["candidates"]:
             candidate = response["candidates"][0]
             if "content" in candidate and "parts" in candidate["content"]:
-                text_content = candidate["content"]["parts"][0]["text"]
+                text_content = candidate["content"]["parts"][0].get("text", "")
 
-            # Extract all JSON blocks between triple backticks
-            json_list = re.findall(r'```json\n(.*?)\n```', text_content.strip(), re.DOTALL)
-            return [json.loads(item) for item in json_list]
+                # Extract all JSON blocks between triple backticks
+                json_list = re.findall(r'```json\n(.*?)\n```', text_content.strip(), re.DOTALL)
+
+                # Convert single JSON block to list format for consistency
+                return [json.loads(item) for item in json_list] if json_list else []
     except (KeyError, IndexError, json.JSONDecodeError) as e:
         print(f"Error extracting JSON from response: {e}")
     
@@ -102,7 +104,7 @@ def format_output(news_items: list) -> Dict[str, Any]:
         "posts": news_items
     }
 
-def save_to_file(data: Dict[str, Any], filepath: str = "news.json") -> bool:
+def save_to_file(data: Dict[str, Any], filepath: str = "news/news.json") -> bool:
     """Save data to a JSON file."""
     try:
         with open(filepath, "w") as f:
@@ -127,11 +129,12 @@ def generate_and_save():
     
     # Fetch news
     try:
-        news_data = fetch_news.fetch_news()
-        #TODO : Uncomment
-        # if news_data is None or news_data == {'error': 'No headlines found'}:
-        #     print("❌ No news data found")
-        #     sys.exit(1)
+        news_data=news_list.news_list
+        print("🟡 Fetching news... ")
+        # news_data = fetch_news.fetch_news()
+        if news_data is None or news_data == {'error': 'No headlines found'}:
+            print("❌ No news data found")
+            sys.exit(1)
     except Exception as e:
         print(f"❌ News fetching error: {e}")
         sys.exit(1)
@@ -141,7 +144,6 @@ def generate_and_save():
     # Call the API
     print("🟡 Calling Gemini API...")
     response = call_gemini_api(api_key, prompt)
-    print("✅ API called successfully.")
     if response is None:
         print("❌ Failed to get a valid response from the API")
         sys.exit(1)
@@ -151,13 +153,13 @@ def generate_and_save():
     if not news_items:
         print("❌ Failed to extract news items from the API response")
         sys.exit(1)
-    print("✅ News items extracted successfully. -    ")
+    print("✅ News items extracted successfully.")
     # Format output with date
     output_data = format_output(news_items)
-    print("✅ News data formatted successfully."+output_data.__str__())
+    print("✅ News data formatted successfully.")
     # Save the result
     if save_to_file(output_data):
-        print("✅ News data saved to news.json")
+        print("✅ News data saved to news/news.json")
     else:
         print("❌ Failed to save news data")
         sys.exit(1)

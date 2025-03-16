@@ -48,5 +48,6 @@ def fetch_news(tag="div", class_name="newsletter-html"):
     except Exception as e:
         return {"error": f"Unexpected error: {str(e)}"}
 
+
 if __name__ == "__main__":
     print(fetch_news())

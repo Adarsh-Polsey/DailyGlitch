@@ -1,32 +1,28 @@
 {
-    "date": "14 March 2025",
+    "date": "16 March 2025",
     "posts": [
-        {
-            "category": "Startups",
-            "headline": "Vanta: Automating Away Your Existential Dread (and Compliance)",
-            "description": "Vanta offers automation tools for compliance with frameworks like SOC 2, ISO 27001, HIPAA, and more. It helps startups and established teams continuously monitor controls, scale programs, and answer questionnaires with AI.",
-            "p1": "Automate compliance? Sounds like automating the feeling of impending doom. Isn't the fun of a startup scrambling to meet deadlines?",
-            "p2": "AI-powered questionnaires. Because who needs human interaction when a soulless algorithm can judge your company's worth?",
-            "p3": "They promise to 'reinforce your security foundation.' As if any foundation in this market is truly secure. More like a house of cards in a hurricane.",
-            "p4": "Vendor risk management? Finally, a tool to help you blame someone else when things go sideways. Let the buck-passing begin!"
-        },
-        {
-            "category": "Entrepreneurs",
-            "headline": "Intel Gets a New Captain: Sinking Ship Still Sinking?",
-            "description": "Lip-Bu Tan replaces Pat Gelsinger as Intel CEO after a massive $18.76 billion loss in 2024. Tan, previously on Intel's board, now faces the challenge of reviving the struggling chip giant.",
-            "p1": "Another CEO steps up to the plate, ready to be the hero...or the fall guy. Place your bets now!",
-            "p2": "$18.76 billion loss? That's not a loss, that's a bonfire of shareholder value. Someone get the marshmallows.",
-            "p3": "Tan was already on the board. So, he's either part of the problem or delusional enough to think he can fix it. Either way, entertaining!",
-            "p4": "First annual loss since 1986. Ah, the good old days when Intel could do no wrong. Now it's just another aging tech dinosaur facing extinction."
-        },
-        {
-            "category": "Artificial Intelligence",
-            "headline": "Google's Gemini Robot: Will It Replace You or Just Judge You?",
-            "description": "Google DeepMind's Gemini Robotics, built on Gemini 2.0, aims to create general-purpose robots capable of performing a wide range of real-world tasks by understanding instructions and adapting to new environments.",
-            "p1": "General-purpose robots? Finally, a machine that can do all the chores you hate, while simultaneously plotting your demise.",
-            "p2": "Built on Gemini 2.0. So, it can hallucinate just like the rest of us. Progress!",
-            "p3": "Capable of understanding and responding quickly. Perfect for gaslighting and passive-aggressive behavior.",
-            "p4": "Adept with dealing with new objects. Meaning it will be just as confused by your love life as your therapist."
-        }
+        [
+            {
+                "category": "Artificial Intelligence",
+                "headline": "Billionaire Cage Match: Musk vs. Altman in AI Arena",
+                "description": "Elon Musk and OpenAI agreed to expedite the trial regarding OpenAI's for-profit shift, a continuation of their public dispute, with the court denying Musk's request to halt the transition.",
+                "p1": "So, the god of free speech wants to control AI's destiny? It's like watching two toddlers fight over who gets to destroy the planet first.",
+                "p2": "Musk probably regrets not trademarking 'Humanity Savior' before Altman did. Now he's stuck suing over broken promises, like the rest of us."
+            },
+            {
+                "category": "Entrepreneurs",
+                "headline": "Apple's Secret Garden: UK Court Hides Encryption Fight",
+                "description": "Apple's appeal against a UK government order to create a backdoor to its encrypted systems was held in secret, barring media despite formal requests. Apple removed advanced data protection for new UK users.",
+                "p1": "Privacy? Oh, you sweet summer child. Governments and corporations are just holding hands behind your back, sharing your secrets like trading cards.",
+                "p2": "Apple, the 'privacy' company, bending over backwards... or just forwards enough to keep selling overpriced gadgets? Guess we'll never know, it's a secret!"
+            },
+            {
+                "category": "Startups",
+                "headline": "Lost in Space: Astronauts' Extended Stay a Cosmic Joke?",
+                "description": "Sunita Williams and Butch Wilmore are finally returning to Earth after nine months on the ISS. Technical issues with Boeing's Starliner capsule caused their extended stay. ",
+                "p1": "Turns out, space travel is less 'Star Trek' and more 'Groundhog Day', except you're stuck with the same people for nine months in a tin can. No escape.",
+                "p2": "Talk about a bad performance review. Boeing's capsule is so terrible, it kept two people hostage in space. At least the frequent flyer miles must be insane."
+            }
+        ]
     ]
 }
