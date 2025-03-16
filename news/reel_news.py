@@ -247,6 +247,7 @@ def process_and_post():
                 f"#TechNews #Innovation #Startups #Entrepreneurs #AI  #Technology #chips #Humour #News"
             )
             caption.replace("\n", "   ")  
+            print(f"✅ Caption Saved: {caption}")
             captions_list.append(caption)
             save_to_file(captions_list)
 
