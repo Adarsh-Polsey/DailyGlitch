@@ -4,24 +4,24 @@
         [
             {
                 "category": "Artificial Intelligence",
-                "headline": "Billionaire Cage Match: Musk vs. Altman in AI Arena",
-                "description": "Elon Musk and OpenAI agreed to expedite the trial regarding OpenAI's for-profit shift, a continuation of their public dispute, with the court denying Musk's request to halt the transition.",
-                "p1": "So, the god of free speech wants to control AI's destiny? It's like watching two toddlers fight over who gets to destroy the planet first.",
-                "p2": "Musk probably regrets not trademarking 'Humanity Savior' before Altman did. Now he's stuck suing over broken promises, like the rest of us."
+                "headline": "Microsoft's AI Gaming Copilot: Because Gamers Can't Google Anymore.",
+                "description": "Microsoft is developing Copilot for Gaming, an AI assistant for Xbox gamers that provides tutorials, game installation, and progress recaps, initially for Xbox Insiders on smartphones.",
+                "p1": "Finally, an AI to tell you how to beat that boss you've been raging at for hours. Because the internet, with its infinite walkthroughs, is clearly not enough hand-holding.",
+                "p2": "Early access for Xbox Insiders? So, the people already dedicated to the platform get yet another advantage. The rich get richer, even in virtual worlds."
             },
             {
-                "category": "Entrepreneurs",
-                "headline": "Apple's Secret Garden: UK Court Hides Encryption Fight",
-                "description": "Apple's appeal against a UK government order to create a backdoor to its encrypted systems was held in secret, barring media despite formal requests. Apple removed advanced data protection for new UK users.",
-                "p1": "Privacy? Oh, you sweet summer child. Governments and corporations are just holding hands behind your back, sharing your secrets like trading cards.",
-                "p2": "Apple, the 'privacy' company, bending over backwards... or just forwards enough to keep selling overpriced gadgets? Guess we'll never know, it's a secret!"
+                "category": "Artificial Intelligence",
+                "headline": "Google's Gemini Speaks Two Languages: Soon You Won't Need Friends!",
+                "description": "Google's Gemini Live is reportedly gaining the ability to understand and respond in two languages, expanding its capabilities beyond single-language interactions.",
+                "p1": "Multilingual AI? Great, now Gemini can misunderstand you in twice as many languages. The future is lost in translation.",
+                "p2": "Hinglish and Spanglish support? So, Google\u2019s officially embracing the linguistic chaos we've all been contributing to for years. It's the end of proper grammar as we know it!"
             },
             {
-                "category": "Startups",
-                "headline": "Lost in Space: Astronauts' Extended Stay a Cosmic Joke?",
-                "description": "Sunita Williams and Butch Wilmore are finally returning to Earth after nine months on the ISS. Technical issues with Boeing's Starliner capsule caused their extended stay. ",
-                "p1": "Turns out, space travel is less 'Star Trek' and more 'Groundhog Day', except you're stuck with the same people for nine months in a tin can. No escape.",
-                "p2": "Talk about a bad performance review. Boeing's capsule is so terrible, it kept two people hostage in space. At least the frequent flyer miles must be insane."
+                "category": "Artificial Intelligence",
+                "headline": "Snapchat's AI Video Lenses: Because Reality Isn't Filtered Enough Already.",
+                "description": "Snapchat is rolling out AI-powered video lenses to Platinum subscribers, utilizing its in-house generative video model to enhance the user experience with AI.",
+                "p1": "AI lenses for Snapchat? Because what we really needed was more artificiality layered on top of our already heavily filtered lives. Authenticity is dead, long live the algorithm.",
+                "p2": "Platinum subscribers only? So, only the truly dedicated to vanity get the AI treatment. Finally, a way to pay for digital perfection, one filter at a time."
             }
         ]
     ]
