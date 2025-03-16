@@ -79,6 +79,16 @@ jobs:
           done
         shell: bash
 
+      - name: 🏷️ Commit and Push the File
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add news/output/download_links.txt
+          git commit -m "Add generated download links"
+          git push origin main  # Change `main` to your actual branch
+
       - name: 📤 Upload `download_links.txt` to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
