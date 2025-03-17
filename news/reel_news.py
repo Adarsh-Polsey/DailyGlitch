@@ -147,10 +147,10 @@ def generate_video_from_images(image_path, output_path):
         final_resolution = (1080, 1920)
         audio_path = "news/templates/background.mp3"
         bg_path = "news/templates/background.jpg"
-        video_duration = 20
+        video_duration = 10
         fps = 10
         num_frames = video_duration * fps
-        zoom_factor = 0.06
+        zoom_factor = 0.08
 
         # Load background
         background_clip = ImageClip(bg_path, duration=video_duration).resized(final_resolution)
