@@ -46,13 +46,13 @@ def call_gemini_api(api_key: str, prompt: str, model: str = "gemini-2.0-flash") 
 
 def create_news_prompt(news_data: list) -> str:
     """Create the prompt for news transformation."""
-    return f"""Given text is today's news. Rewrite it with dark humor, irony, and emotional triggers while keeping the facts intact.Use simple and light words to convey the news in a high-impact manner.
+    return f"""Given text is today's news. Rewrite it with keywords, triggers and no buzz words while keeping the facts intact.Use simple and light words to convey the news in a high-impact manner.
 
     ### Format:
     - **One news per category.**
-    - **Headline:** (Max 20 words) negativity attracts more than positivity,use negativity as a strong hook, Catchy, darkly humorous, or thought-provoking.
+    - **Headline:** (Max 20 words) negativity attracts more than positivity, use negativity as a strong hook, Catchy, darkly humorous, or thought-provoking.
     - **Description:** (50 words) Direct, No humour, should convey the news originally as what it is exactly.
-    - **2 Points:** (Each 4 lines) Inject irony, satire, or brutal honesty.
+    - **2 extended Points:** (Each 50 words) Inject irony, satire, brutal honesty, negativity of how it could affect us, but should not change the meaning.
 
     ### Fields:
     {{  

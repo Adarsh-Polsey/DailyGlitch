@@ -242,9 +242,9 @@ def process_and_post():
 
             # Create caption with all 4 paragraphs
             caption = (
-                f"{news['headline']}                       {news['description']}"
+                f"{news['headline']} {news['description']}"
                 f"  {news['p1']}  {news['p2']}"
-                f"#TechNews #Innovation #Startups #Entrepreneurs #AI  #Technology #chips #Humour #News"
+                f"#techNews #innovation #startup #entrepreneurship #ai  #technology #artificialintelligence #humour #News"
             )
             caption.replace("\n", "   ")  
             print(f"✅ Caption Saved: {caption}")
