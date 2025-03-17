@@ -46,17 +46,17 @@ def call_gemini_api(api_key: str, prompt: str, model: str = "gemini-2.0-flash") 
 
 def create_news_prompt(news_data: list) -> str:
     """Create the prompt for news transformation."""
-    return f"""Given text is today's news. Rewrite it with keywords, triggers and no buzz words while keeping the facts intact.Use simple and light words to convey the news in a high-impact manner.
+    return f"""Given text is today's news. Rewrite it with keywords, triggers, no bullshit buzzwords, sticking to raw facts. Use simple, gut-punching words for max damage.
 
     ### Format:
     - **One news per category.**
-    - **Headline:** (Max 20 words) negativity attracts more than positivity, use negativity as a strong hook, Catchy, darkly humorous, or thought-provoking.
-    - **Description:** (50 words) Direct, No humour, should convey the news originally as what it is exactly.
-    - **2 extended Points:** (Each 50 words) Inject irony, satire, brutal honesty, negativity of how it could affect us, but should not change the meaning.
+    - **Headline:** (Max 20 words) Negativity hooks harder than hope—go dark, catchy, twisted, or mind-fucking.
+    - **Description:** (50 words) Straight, no laughs, just the cold, hard news as it is—unfiltered.
+    - **2 Extended Points:** (Each 50 words) Lace in dark humor, savage irony, brutal truth—show the ugly fallout, no distortion.
 
     ### Fields:
     {{  
-    "category":should be one of [Startups | Artificial Intelligence | Entrepreneurs],
+    "category": pick one [Startups | Artificial Intelligence | Entrepreneurs],
     "headline",
     "description",
     "p1",
@@ -64,10 +64,10 @@ def create_news_prompt(news_data: list) -> str:
     }}
 
     ### Tone:
-    - **Simple words, high impact.**
-    - **Dark humor at its deepest.**
-    - **Irony so sharp it cuts.**
-    - **Emotional triggers that hit where it hurts.**
+    - **Simple words, big punches.**
+    - **Dark humor that stabs deep.**
+    - **Irony sharp enough to slit throats.**
+    - **Triggers that rip open fear, greed, or despair.**
 
     ### News:
     {news_data}
