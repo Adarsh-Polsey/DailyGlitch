@@ -215,7 +215,7 @@ def process_and_post():
         # Load news data
     with open("news/news.json") as f:
         news_data = json.load(f)
-    news_list = news_data["posts"][0]
+    news_list = news_data["posts"]
     # print(news_list)
     captions_list=[]
     # Process news

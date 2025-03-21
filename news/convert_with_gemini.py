@@ -1,5 +1,6 @@
 import os
 import json,subprocess,sys,re
+import traceback
 from typing import Dict, Any, Optional
 from datetime import datetime
 
@@ -90,7 +91,8 @@ def extract_json_from_gemini_response(response: Dict[str, Any]) -> Optional[list
 
                 # Convert single JSON block to list format for consistency
                 return [json.loads(item) for item in json_list] if json_list else []
-    except (KeyError, IndexError, json.JSONDecodeError) as e:
+    except Exception as e:
+        traceback.print_exc()
         print(f"Error extracting JSON from response: {e}")
     
     return None
