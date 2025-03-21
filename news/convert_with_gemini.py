@@ -87,10 +87,19 @@ def extract_json_from_gemini_response(response: Dict[str, Any]) -> Optional[list
                 text_content = candidate["content"]["parts"][0].get("text", "")
 
                 # Extract all JSON blocks between triple backticks
-                json_list = re.findall(r'```json\n(.*?)\n```', text_content.strip(), re.DOTALL)
+                json_list = re.findall(r'\{.*?\}', text_content, re.DOTALL)
 
-                # Convert single JSON block to list format for consistency
-                return [json.loads(item) for item in json_list] if json_list else []
+                parsed_json = []
+                for item in json_list:
+                    try:
+                        # Remove trailing commas before parsing
+                        item = re.sub(r',\s*([\]}])', r'\1', item)  
+                        parsed_json.append(json.loads(item))
+                    except json.JSONDecodeError as e:
+                        print(f"Error parsing JSON: {e}\nProblematic Entry:\n{item}\n")
+
+                print("Parsed JSON:", parsed_json)
+                return parsed_json if parsed_json else []
     except Exception as e:
         traceback.print_exc()
         print(f"Error extracting JSON from response: {e}")
