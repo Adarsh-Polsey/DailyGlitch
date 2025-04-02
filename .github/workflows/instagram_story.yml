@@ -1,8 +1,7 @@
 name: Post Stories
 
 on:
-  schedule:
-    - cron: "01 18 * * *"
+  
   workflow_dispatch: 
 
 jobs:
