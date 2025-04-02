@@ -1,0 +1,27 @@
+2025-04-03 01:29:11,930 - __main__ - INFO - Bot started successfully
+2025-04-03 01:29:11,930 - __main__ - ERROR - Failed to start bot: Cannot close a running event loop
+2025-04-03 01:29:11,930 - __main__ - CRITICAL - Critical error: Cannot close a running event loop
+2025-04-03 01:30:25,833 - __main__ - ERROR - Failed to start bot: 'NewsBot' object has no attribute 'start'
+2025-04-03 01:30:25,833 - __main__ - CRITICAL - Critical error: This Application is not running!
+2025-04-03 01:30:25,834 - asyncio - ERROR - Exception in callback <_asyncio.TaskStepMethWrapper object at 0x1033db850>()
+handle: <Handle <_asyncio.TaskStepMethWrapper object at 0x1033db850>()>
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 774, in cancel
+    if child.cancel(msg=msg):
+       ~~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 774, in cancel
+    if child.cancel(msg=msg):
+       ~~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 774, in cancel
+    if child.cancel(msg=msg):
+       ~~~~~~~~~~~~^^^^^^^^^
+  [Previous line repeated 990 more times]
+RecursionError: maximum recursion depth exceeded
+2025-04-03 01:31:32,481 - __main__ - CRITICAL - Fatal error: maximum recursion depth exceeded
+2025-04-03 01:31:32,518 - asyncio - ERROR - Task was destroyed but it is pending!
+task: <Task cancelling name='Task-1' coro=<main() done, defined at /Users/adx/dev/fprojects/daily_glitch/news/t_bot.py:200> wait_for=<_GatheringFuture pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at /opt/homebrew/Cellar/python@3.13/3.13.1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py:820]>
+2025-04-03 01:31:39,081 - __main__ - INFO - Starting bot...
+2025-04-03 01:31:39,081 - __main__ - CRITICAL - Fatal error: Cannot close a running event loop
